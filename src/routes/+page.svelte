@@ -1,5 +1,6 @@
+import Background from './background.svelte'
 
-<h1 class="text-xl">Welcome to SvelteKit</h1>
 
-
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<main>
+  <Background class="top-0 left-0 z-0 fixed h-full w-full"/>
+</main>
