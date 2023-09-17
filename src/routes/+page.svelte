@@ -1,6 +1,7 @@
-import Background from './background.svelte'
-
+<script>
+  import Background from './Background.svelte'
+</script>
 
 <main>
-  <Background class="top-0 left-0 z-0 fixed h-full w-full"/>
+  <Background/>
 </main>
