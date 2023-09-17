@@ -9,7 +9,4 @@
 <slot />
 
 <style>
-  *{
-    font-family: 'JetBrains Mono', monospace;
-  }
 </style>

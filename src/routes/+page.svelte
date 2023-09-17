@@ -3,5 +3,5 @@
 </script>
 
 <main>
-  <Background/>
+  <Background />
 </main>
