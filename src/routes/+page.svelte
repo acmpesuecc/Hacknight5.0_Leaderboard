@@ -7,7 +7,7 @@
 
   let leaderboard = [
     {
-    name: "cupcake",
+    name: "bun137",
     score: 209,
     },
     {
