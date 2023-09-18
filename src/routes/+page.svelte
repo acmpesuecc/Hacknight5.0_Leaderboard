@@ -18,6 +18,10 @@
     name: "VyoJ",
     score: 0,
     },
+    {
+      name: "achyuthcodes30"
+      score: 15
+    }
   ];
 
 
