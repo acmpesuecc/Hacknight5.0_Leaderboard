@@ -26,7 +26,7 @@
 <main>
   <Background />
   {#each leaderboard as person, i}
-    <Card index={i} user={person.username}, points={person.score}/>
+    <Card index={i+1} username={person.username}, points={person.score}/>
   {/each}
 
   
