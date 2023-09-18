@@ -19,8 +19,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 120vh;
+    width: 120vw;
     background-color: #0F0913;
     z-index: 0;
     color: #231E25;
