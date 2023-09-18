@@ -19,7 +19,7 @@
     score: 0,
     },
     {
-      name: "achyuthcodes30"
+      name: "achyuthcodes30",
       score: 15
     }
   ];
