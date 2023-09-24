@@ -9,45 +9,48 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;800&display=swap" rel="stylesheet">
 
 
+
+
 <main>
     <body class="text-white">
-            
-            <!-- <div class=" md:ml-40 md:mr-40 md:mt-10 md:mb-10 rounded-2xl pt-4 pb-4 pl-20 pr-20 text-start flex justify-between items-center {index == 1 ? 'bg-[#C3BCC3] text-black' : 'bg-[#655F67]'} ">
-                <div class=" text-2xl">
-                    {index}
-                </div>
-                <div class="flex justify-center items-center">
-                    <img src="https://github.com/{username}.png" alt="" class="rounded-full shadow-2xl w-28 h-28 md:mr-8">
-                    <h2 class=" text-3xl ">
-                        {username}
-                    </h2>
-                </div>
-                <div class="contents">
-                    
-                    <div class=" text-3xl">{points}</div>
-                </div>
-            </div> -->
-            <div class="flex">
-                <div class="flex items-center">
-                    <div class=" relative">
-                        <!-- <img src="card_bg.png" alt="background_img" class=" w-100 h-auto "> -->
-                        <img src="background.svg" alt="background_stuff" class=" w-28 h-auto">
-                        <div class=" absolute inset-0 flex items-center justify-center">
-                            <img src="https://github.com/{username}.png" alt="" class=" rounded-md w-20 absolute rotate-12 h-auto  ">
-                        </div>
-                    </div>  
-                    <div class="contents ">
-                        <h1 class=" text-3xl text-center text-[#EFEDEF]">
-                            {username} 
-                        </h1>
-                    </div>
-                
+            <div class="card flex m-10 bg-[#0F0913] rounded-xl p-2 pl-10 pr-10 items-center justify-between {index == 1? 'card-gold' : ''} cursor-pointer" onclick="window.location='{username}'">
 
+
+                    <div class="relative mt-2 mb-2">
+                        <img src="card_background.svg" alt="background_image" class="w-40 h-auto">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <img src="https://github.com/{username}.png" alt="" class="rounded-md w-32 absolute {index % 2 == 0 ? 'rotate-12' : '-rotate-12'} h-auto">
+                        </div>
+                    </div>
+
+
+                    <div class="flex flex-col justify-center items-center"> 
+                        <h1 class="text-5xl text-[#EFEDEF] font-bold">
+                            {username.toUpperCase()}
+                        </h1>
+                        <div class="score text-3xl p-2">
+                            {points}
+                        </div>
+
+                    </div>
+
+                    <div class="score font-bold text-[#EFEDEF] text-5xl">
+                    {index}
+                    </div>
             </div>
     </body>
 </main>
 
 
 <style>
-    /* put your styles here */
+
+.card{
+    border: 1px solid rgb(101, 95, 103);
+    background: linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 0.04) 92.3%);
+    backdrop-filter: blur(5px);
+}
+
+.card-gold{
+    border-color: #D2B863;
+}
 </style>
