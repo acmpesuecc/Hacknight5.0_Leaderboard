@@ -14,6 +14,7 @@
     return acc;
   }, {});
 
+
   let leaderboard = Object.keys(resultObj).map(key => {
     return { name: key, total_points: resultObj[key] };
   });
