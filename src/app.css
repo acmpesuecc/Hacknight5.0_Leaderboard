@@ -6,3 +6,8 @@
 *{
 font-family: 'JetBrains Mono', monospace;
 }
+
+*::selection {
+    background: #b4ff39;
+    color: #170f1e;
+}
