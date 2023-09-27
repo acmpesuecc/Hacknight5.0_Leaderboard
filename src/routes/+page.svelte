@@ -25,33 +25,35 @@
 <main>
   <Background />
 
-  <div class="header flex items-left justify-between p-10">
-    <img src="acmlogo.png" alt="acmlogo" width="20%"> 
+
+<div class="flex flex-col h-[75vh] md:h-[80vh] lg:h-[100vh] justify-between mb-10">
+  <div class="header flex justify-center lg:items-left lg:justify-between pl-14 pt-10">
+    <img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4"> 
   </div>
 
 
 
-  <div class="hero w-screen h-1/6 flex justify-between items-center p-10">
-  <h1 class="text-9xl font-bold">
-  LEADERBOARD
-  </h1>
-  <img src="h10_icon.png" class="w-2/6" alt="logo">
+  <div class="hero w-screen flex flex-col lg:flex-row justify-between items-center p-2 lg:p-14">
+    <h1 class="text-5xl lg:text-9xl font-bold">
+    LEADERBOARD
+    </h1>
+    <img src="h10_icon.png" class="w-4/6 md:w-[50%] lg:w-[30%]" alt="logo">
   </div>
 
-  <div class="flex items-center justify-around">
-    <img src="lines.svg" alt="lines" class="hidden lg:block">
-    <div class="flex items-center justify-around">
-    <img src="downarrow.svg" alt="" class="m-2"> 
-    <img src="downarrow.svg" alt="" class="m-2"> 
-    <img src="downarrow.svg" alt="" class="m-2"> 
+  <div class="flex items-center justify-center xl:justify-between p-2 lg:p-14">
+    <img src="lines.svg" alt="lines" class="hidden xl:block">
+    <div class="flex items-center justify-items-center">
+      <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6"> 
+      <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6"> 
+      <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6"> 
     </div>
-
   </div>
 
+</div>
 
 
 
-  <div class="leaderboard-background rounded-xl bg-[#0F0913] m-10 pt-5 pb-5 flex flex-col">
+  <div class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 pt-5 pb-5 flex flex-col">
     {#each leaderboard as person, i}
       <Card index={i+1} username={person.name} points={person.total_points}/>
     {/each}
