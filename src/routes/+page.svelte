@@ -2,23 +2,10 @@
   import Background from './Background.svelte';
   import Card from './Card.svelte';
   export let data;
-  console.log(data.json_response);
+  
+  let leaderboard = data.json_response;
 
 
-  let resultObj = data.json_response.reduce((acc, curr) => {
-    if (acc[curr.Contributor_name]) {
-      acc[curr.Contributor_name] += curr.Points_allotted;
-    } else {
-      acc[curr.Contributor_name] = curr.Points_allotted;
-    }
-    return acc;
-  }, {});
-
-
-  let leaderboard = Object.keys(resultObj).map(key => {
-    return { name: key, total_points: resultObj[key] };
-  });
-  leaderboard.sort((a,b) => b.total_points - a.total_points);
 
 </script>
 
@@ -54,8 +41,8 @@
 
 
   <div class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 pt-5 pb-5 flex flex-col">
-    {#each leaderboard as person, i}
-      <Card index={i+1} username={person.name} points={person.total_points}/>
+    {#each leaderboard as person}
+      <Card index={person.ID} username={person.Name} points={person.Current_bounty}/>
     {/each}
   </div>
 

@@ -3,7 +3,7 @@ let json_response;
 
 export const load = async ({ fetch }) => {
     try {
-        const response = await fetch('http://smaran.ddns.net:3000/lb_all');
+        const response = await fetch('http://smaran.ddns.net:3000/leaderboard_mat');
         if (!response.ok) {
             throw new Error("Reddy Anna Is Not Talking");
         } else {
