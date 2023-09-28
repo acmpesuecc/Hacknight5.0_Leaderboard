@@ -27,7 +27,7 @@
 
 
 <div class="flex flex-col h-[75vh] md:h-[80vh] lg:h-[100vh] justify-between mb-10">
-  <div class="header flex justify-center lg:items-left lg:justify-between pl-14 pt-10">
+  <div class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10">
     <img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4"> 
   </div>
 
