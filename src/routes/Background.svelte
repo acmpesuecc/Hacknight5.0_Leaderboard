@@ -1,7 +1,7 @@
 <script>
   const text_to_repeat = "GLHF*";
   let target_text = "";
-  for(let i = 0; i < 100; i++){
+  for(let i = 0; i < 200; i++){
     target_text += text_to_repeat; 
   }
 </script>
