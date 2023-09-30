@@ -4,8 +4,9 @@
   export let data;
   
   let leaderboard = data.json_response;
-
-
+  // console.log(leaderboard);
+  leaderboard.sort((a,b) => b.Current_bounty - a.Current_bounty);
+  console.log(leaderboard);
 
 </script>
 
@@ -41,8 +42,8 @@
 
 
   <div class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 pt-5 pb-5 flex flex-col">
-    {#each leaderboard as person}
-      <Card index={person.ID} username={person.Name} points={person.Current_bounty}/>
+    {#each leaderboard as person, i}
+      <Card index={i+1} username={person.Name} points={person.Current_bounty}/>
     {/each}
   </div>
 
