@@ -4,9 +4,7 @@
   export let data;
   
   let leaderboard = data.json_response;
-  // console.log(leaderboard);
   leaderboard.sort((a,b) => b.Current_bounty - a.Current_bounty);
-  console.log(leaderboard);
 
 </script>
 
