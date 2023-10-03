@@ -1,41 +1,82 @@
 <script>
+    import { inview } from 'svelte-inview';
+
+    let innerWidth = 0;
     export let username;
     export let points;
     export let index;
+    let is_scramble_word = true;
+	let usernameText = username;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-1234567890";
+    let interval = null;
+	
+    function scrambleLetters() {
+        if (is_scramble_word === true) {
+            let iteration = 0;
+            clearInterval(interval);
+            interval = setInterval(() => {
+                usernameText = usernameText.split("").map((letter, i) => {
+                    if(i < iteration) {
+                        return username[i];
+                    }
+                    return letters[Math.floor(Math.random() * 26)]
+                }).join("");
+                if(iteration >= username.length){ 
+                    is_scramble_word = false
+                    clearInterval(interval);
+                }
+                iteration += 1 / 3;
+            }, 30);
+        }
+    }
     // put your js here
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;800&display=swap" rel="stylesheet">
 
+<svelte:window bind:innerWidth />
 
-
-
-<main>
-    <body class="text-white">
-            <div class="card flex m-10 bg-[#0F0913] rounded-xl p-2 items-center justify-center {index == 1 ? 'card-gold' : ''} cursor-pointer" onclick="window.location='{username}'">
-                <div class="flex flex-col items-center md:flex-row md:justify-between lg:flex-row lg:justify-between ">
-                    <div class="relative mt-2 mb-2 md:m-6" >
-                        <img src="card_background.svg" alt="background_image" class="w-40 h-auto block">
+<main class="{innerWidth <= 672 ? 'card-span-full' : ''} ">
+    <body class=" {index==1 ? 'text-[#FFFBA4]' :'text-white'} " >
+       
+            <div class="card grid grid-cols-2 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center {index == 1 ? 'card-gold' : ''} cursor-pointer" onclick="window.location='{username}'">
+              
+                <div class="flex flex-col items-center">
+                    
+                    <div class="relative" >
+                        <img src="card_background.svg" alt="background_image" class=" w-20  h-auto block">
                         <div class="absolute inset-0 flex items-center justify-center ">
-                            <img src="https://github.com/{username}.png" alt="" class="rounded-md w-32 absolute {index % 2 == 0 ? 'rotate-12' : '-rotate-12'} h-auto ">
+                            <img src="https://github.com/{username}.png" alt="" class="rounded-md w-16  absolute {index % 2 == 0 ? 'rotate-12' : '-rotate-12'} h-auto ">
                         </div>
                     </div>
 
 
-                    <div class="flex flex-col justify-center items-center m-0 lg:m-16 lg:ml-20 lg:mr-20"> 
-                        <h1 class=" text-xl md:text-3xl lg:text-5xl text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index==1 ? 'text-[#FFFBA4]' :''} ">
-                            {username.toUpperCase()}
+                    <div class="flex flex-col justify-center items-center"> 
+                        <div use:inview={{ unobserveOnEnter: true, rootMargin: '-5%' }} on:change={({ detail }) => {
+                            if (detail.inView) {
+                                scrambleLetters();
+                            }
+                        }} />
+                        <h1 class=" text-base lg:text-xl font-bold  ">
+                            {usernameText.toUpperCase()}
                         </h1>
-                        <div class="score text-3xl mb-2 lg:p-2 {index==1 ? 'text-[#FFFBA4]' :''} ">
+                        <div class="score text-xl ">
                             {points}
                         </div>
+                    </div>
 
-                    </div>
-                </div>
-                    <div class="score font-bold text-[#EFEDEF] text-5xl ml-6 lg:ml-8 md:ml-8 {index==1 ? 'text-[#FFFBA4]' :''} ">
+
+                </div>   
+                
+                <div class="sc<div use:inview={{ unobserveOnEnter: true, rootMargin: '-10%' }} on:change={({ detail }) => {
+					if (detail.inView) {
+						scrambleLetters();
+					}
+				}} />ore font-bold text-4xl text-center">
                     {index}
-                    </div>
+                </div> 
+                  
             </div>
     </body>
 </main>
@@ -52,4 +93,10 @@
 .card-gold{
     border-color: #D2B863;
 }
+
+.card-span-full{
+    grid-column: 4 / -1;
+    width: 100%;
+}
+
 </style>
