@@ -1,33 +1,36 @@
 <script>
 	import { inview } from 'svelte-inview';
 
-    export let username;
+	export let username;
 	export let points;
 	export let index;
-    let is_scramble_word = true;
+	let is_scramble_word = true;
 	let usernameText = username;
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-1234567890";
-    let interval = null;
-	
-    function scrambleLetters() {
-        if (is_scramble_word === true) {
-            let iteration = 0;
-            clearInterval(interval);
-            interval = setInterval(() => {
-                usernameText = usernameText.split("").map((letter, i) => {
-                    if(i < iteration) {
-                        return username[i];
-                    }
-                    return letters[Math.floor(Math.random() * 26)]
-                }).join("");
-                if(iteration >= username.length){ 
-                    is_scramble_word = false
-                    clearInterval(interval);
-                }
-                iteration += 1 / 3;
-            }, 30);
-        }
-    }
+	const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-1234567890';
+	let interval = null;
+
+	function scrambleLetters() {
+		if (is_scramble_word === true) {
+			let iteration = 0;
+			clearInterval(interval);
+			interval = setInterval(() => {
+				usernameText = usernameText
+					.split('')
+					.map((letter, i) => {
+						if (i < iteration) {
+							return username[i];
+						}
+						return letters[Math.floor(Math.random() * 26)];
+					})
+					.join('');
+				if (iteration >= username.length) {
+					is_scramble_word = false;
+					clearInterval(interval);
+				}
+				iteration += 1 / 3;
+			}, 30);
+		}
+	}
 
 	// put your js here
 </script>
@@ -39,10 +42,12 @@
 	rel="stylesheet"
 />
 
-<main class="w-full">
+<main class={index == 1 ? 'lg:w-1/2' : ''}>
 	<body class="text-white">
 		<div
-			class="card flex m-3 p-4 bg-[#0F0913] rounded-xl items-center justify-between {index == 1? 'card-gold': ''} cursor-pointer"
+			class="card flex m-3 p-4 bg-[#0F0913] rounded-xl items-center justify-between {index == 1
+				? 'card-gold'
+				: ''} cursor-pointer"
 			onclick="window.location='{username}'"
 		>
 			<div class="relative m-2">
@@ -57,12 +62,21 @@
 			</div>
 
 			<div class="flex flex-col justify-center items-center m-0 lg:m-5 lg:ml-8 lg:mr-8">
-				<div use:inview={{ unobserveOnEnter: true, rootMargin: '-10%' }} on:change={({ detail }) => {
-					if (detail.inView) {
-						scrambleLetters();
-					}
-				}} />
-				<h1	class="{'username'+index} text-xl md:text-3xl lg:text-5xl text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index ==1 ? 'text-[#FFFBA4]': ''} ">
+				<div
+					use:inview={{ unobserveOnEnter: true, rootMargin: '-10%' }}
+					on:change={({ detail }) => {
+						if (detail.inView) {
+							scrambleLetters();
+						}
+					}}
+				/>
+				<h1
+					class="{'username' +
+						index} text-xl md:text-3xl lg:text-4xl text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index ==
+					1
+						? 'text-[#FFFBA4]'
+						: ''} "
+				>
 					{usernameText.toUpperCase()}
 				</h1>
 				<div class="score text-3xl mb-2 lg:p-2 {index == 1 ? 'text-[#FFFBA4]' : ''} ">
@@ -71,7 +85,9 @@
 			</div>
 
 			<div
-				class="score font-bold text-[#EFEDEF] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index == 1? 'text-[#FFFBA4]'	: ''} "
+				class="score font-bold text-[#EFEDEF] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index == 1
+					? 'text-[#FFFBA4]'
+					: ''} "
 			>
 				{index}
 			</div>
