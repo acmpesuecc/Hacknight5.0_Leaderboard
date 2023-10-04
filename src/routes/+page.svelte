@@ -12,7 +12,7 @@
 <svelte:window bind:innerWidth />
 
 <main>
-  <Background />
+  <Background info={leaderboard} />
 
   <div
     class="flex flex-col h-[75vh] md:h-[80vh] lg:h-[100vh] justify-between mb-10"
