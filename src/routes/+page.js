@@ -56,7 +56,7 @@ export const load = async ({ fetch }) => {
         UpdatedAt: "0001-01-01T00:00:00Z",
         DeletedAt: null,
         Name: "aadithyakrishnavamshi",
-        Current_bounty: 20
+        Current_bounty: 10
       });
       return {
         json_response
