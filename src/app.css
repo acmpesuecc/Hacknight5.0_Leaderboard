@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 *::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 * {
-	font-family: 'JetBrains Mono', monospace;
-	color-scheme: dark;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
+  font-family: "JetBrains Mono", monospace;
+  color-scheme: dark;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 *::selection {
-	background: #b4ff39;
-	color: #170f1e;
+  background: #b4ff39;
+  color: #170f1e;
 }
