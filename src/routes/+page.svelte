@@ -5,13 +5,11 @@
 	export let data;
 	let innerWidth = 0;
 
-
 	let leaderboard = data.json_response;
 	leaderboard.sort((a, b) => b.Current_bounty - a.Current_bounty);
 </script>
 
 <svelte:window bind:innerWidth />
-
 
 <main>
 	<Background />
@@ -21,7 +19,7 @@
 			<img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4" />
 		</div>
 
-		<div class="hero w-screen flex flex-col lg:flex-row justify-between items-center p-2 lg:p-14">
+		<div class="hero w-screen flex flex-col xl:flex-row justify-between items-center p-2 lg:p-14">
 			<h1 class="text-5xl lg:text-9xl font-bold text-white">LEADERBOARD</h1>
 			<img src="h10_icon.png" class="w-4/6 md:w-[50%] lg:w-[30%]" alt="logo" />
 		</div>
@@ -43,33 +41,43 @@
 			{#each leaderboard as person, i}
 				<Card index={i + 1} username={person.Name} points={person.Current_bounty} />
 			{/each}
-
-
 		{:else}
-
-		<CardRow index={1} username={leaderboard[0].Name} points={leaderboard[0].Current_bounty} />
-		<CardRow index={2} username={leaderboard[1].Name} points={leaderboard[1].Current_bounty} />
-		<CardRow index={3} username={leaderboard[2].Name} points={leaderboard[2].Current_bounty} />
-
-
-
-		<div class="grid-peeps grid justify-stretch items-center w-full">
-			{#each leaderboard as person, i}
-				{#if ![0, 1, 2].includes(i)}
-					<Card index={i + 1} username={person.Name} points={person.Current_bounty} />
+			{#if innerWidth >= 1440}
+				<CardRow index={1} username={leaderboard[0].Name} points={leaderboard[0].Current_bounty} />
+			{:else}
+				<Card index={1} username={leaderboard[0].Name} points={leaderboard[0].Current_bounty} />
+			{/if}
+			<div class="grid-wrapper2-3 grid grid-cols-2 items-center justify-stretch">
+				{#if innerWidth >= 1440}
+					<CardRow
+						index={2}
+						username={leaderboard[1].Name}
+						points={leaderboard[1].Current_bounty}
+					/>
+					<CardRow
+						index={3}
+						username={leaderboard[2].Name}
+						points={leaderboard[2].Current_bounty}
+					/>
+				{:else}
+					<Card index={2} username={leaderboard[1].Name} points={leaderboard[1].Current_bounty} />
+					<Card index={3} username={leaderboard[2].Name} points={leaderboard[2].Current_bounty} />
 				{/if}
-			{/each}
-		</div>
+			</div>
 
+			<div class="grid-peeps grid justify-stretch items-center w-full">
+				{#each leaderboard as person, i}
+					{#if ![0, 1, 2].includes(i)}
+						<Card index={i + 1} username={person.Name} points={person.Current_bounty} />
+					{/if}
+				{/each}
+			</div>
 		{/if}
-
-
-
 	</div>
 </main>
 
 <style>
-	.grid-peeps{
-		grid-template-columns: repeat(auto-fit, minmax(0px, 300px));
+	.grid-peeps {
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 	}
 </style>
