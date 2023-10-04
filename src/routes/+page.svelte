@@ -72,7 +72,7 @@
         />
       {/if}
       <div
-        class="grid-wrapper2-3 grid grid-cols-2 items-center justify-stretch"
+        class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
       >
         {#if innerWidth >= 1440}
           <CardRow

@@ -6,9 +6,14 @@
   export let points;
   export let index;
   let is_scramble_word = true;
+  let is_scramble_num = true;
   let usernameText = username;
+  points = points.toString();
+  let scoreText = points;
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-1234567890";
+  const nums = "1234567890";
   let interval = null;
+  let interval_num = null;
 
   function scrambleLetters() {
     if (is_scramble_word === true) {
@@ -32,7 +37,29 @@
       }, 30);
     }
   }
-  // put your js here
+
+  function scrambleNumbers() {
+    if (is_scramble_num === true) {
+      let iteration = 0;
+      clearInterval(interval_num);
+      interval_num = setInterval(() => {
+        scoreText = scoreText
+          .split("")
+          .map((num, i) => {
+            if (i < iteration) {
+              return points[i];
+            }
+            return nums[Math.floor(Math.random() * 10)];
+          })
+          .join("");
+        if (iteration >= points.length) {
+          is_scramble_num = false;
+          clearInterval(interval_num);
+        }
+        iteration += 1 / 12;
+      }, 30);
+    }
+  }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,13 +74,16 @@
 <main class="{innerWidth <= 672 ? 'card-span-full' : ''} ">
   <body class=" {index == 1 ? 'text-[#FFFBA4]' : 'text-white'} ">
     <div
-      class="card grid grid-cols-2 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center {index ==
+      class="card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center {index ==
       1
         ? 'card-gold'
         : ''} cursor-pointer"
       onclick="window.location='{username}'"
     >
-      <div class="flex flex-col items-center">
+      <div class="rank font-bold text-4xl text-center">
+        {index}
+      </div>
+      <div class="flex flex-col col-span-2 items-center">
         <div class="relative">
           <img
             src="card_background.svg"
@@ -87,14 +117,18 @@
           >
             {usernameText.toUpperCase()}
           </h1>
+          <div
+            use:inview={{ unobserveOnEnter: true, rootMargin: "-10%" }}
+            on:change={({ detail }) => {
+              if (detail.inView) {
+                scrambleNumbers();
+              }
+            }}
+          />
           <div class="score text-xl">
-            {points}
+            {scoreText}
           </div>
         </div>
-      </div>
-
-      <div class="score font-bold text-4xl text-center">
-        {index}
       </div>
     </div>
   </body>
