@@ -81,8 +81,8 @@
             }}
           />
           <h1
-            class="  font-bold {username.length > 15
-              ? 'text-sm'
+            class="font-bold {username.length > 15
+              ? 'text-[0.8rem]'
               : 'lg:text-xl'}"
           >
             {usernameText.toUpperCase()}

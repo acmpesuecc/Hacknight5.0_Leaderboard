@@ -20,14 +20,18 @@
     <div
       class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10"
     >
-      <img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4" />
+      <img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4 max-w-md" />
     </div>
 
     <div
       class="hero w-screen flex flex-col xl:flex-row justify-between items-center p-2 lg:p-14"
     >
       <h1 class="text-5xl lg:text-9xl font-bold text-white">LEADERBOARD</h1>
-      <img src="h10_icon.png" class="w-4/6 md:w-[50%] lg:w-[30%]" alt="logo" />
+      <img
+        src="h10_icon.png"
+        class="w-4/6 md:w-[50%] lg:w-[30%] max-w-2xl"
+        alt="logo"
+      />
     </div>
 
     <div
