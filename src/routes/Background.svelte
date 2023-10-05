@@ -66,7 +66,7 @@
   >
     {#each { length: tilings } as _}
       {#each binified as [name, value]}
-        {name}<span style="color: #a99489">{value}</span>
+        {name}<span class="gradient" >{value}</span>
       {/each}
     {/each}
   </div>
@@ -100,5 +100,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+  .gradient{
+    background: linear-gradient(90deg, rgba(236, 66, 55, 0.3) 0%, rgba(255, 251, 164, 0.3) 66.15%, rgba(51, 182, 216, 0.3) 100%) ;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;  
   }
 </style>
