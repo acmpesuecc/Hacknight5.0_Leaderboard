@@ -28,25 +28,14 @@
 
   let innerHeight;
   let background;
-  let tilings;
-
-  onMount(() => {
-    // TODO(ad-chaos): This closure should be async to make the below logic
-    // work, since it is the _correct_ way to do it, but the website hangs when
-    // doing an await tick(), no idea why :/
-    //
-    // await tick();
-    // let tileHeight = background.offsetHeight;
-    //
-    // function calcTilings(viewPortHeight) {
-    //   return 5;
-    //   return Math.round(viewPortHeight / tileHeight);
-    // }
-    //
-    // tilings = calcTilings(innerHeight)
-
-    tilings = 5
-  });
+  // TODO(ad-chaos): The reactive declaration works, but before that have to deal with svelte nonsense, so hardcoded to 6
+  let tilings = 6;
+  // $: {
+  //   console.log("tf bro?", background)
+  //   if(background != undefined) {
+  //     console.log(innerHeight, background.offsetHeight, Math.ceil(innerHeight / background.offsetHeight) + 1)
+  //   }
+  // }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -57,17 +46,15 @@
 />
 
 <svelte:window bind:innerHeight />
+
 <main class="unselect">
-  <div
-    id="tile-bck"
-    bind:this={background}
-    class="text-4xl font-extrabold"
-    disabled
-  >
+  <div class="text-4xl font-extrabold text-center" disabled>
     {#each { length: tilings } as _}
-      {#each binified as [name, value]}
-        {name}<span class="gradient" >{value}</span>
-      {/each}
+      <span class="chunk">
+        {#each binified as [name, value]}
+          {name}<span class="gradient">{value}</span>
+        {/each}
+      </span>
     {/each}
   </div>
 </main>
@@ -80,7 +67,6 @@
     width: 100vw;
     background-color: #0f0913;
     color: #231e25;
-    justify-content: center;
     overflow: hidden;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -101,10 +87,15 @@
     -ms-user-select: none;
     user-select: none;
   }
-  .gradient{
-    background: linear-gradient(90deg, rgba(236, 66, 55, 0.3) 0%, rgba(255, 251, 164, 0.3) 66.15%, rgba(51, 182, 216, 0.3) 100%) ;
+  .gradient {
+    background: linear-gradient(
+      90deg,
+      rgba(236, 66, 55, 0.3) 0%,
+      rgba(255, 251, 164, 0.3) 66.15%,
+      rgba(51, 182, 216, 0.3) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;  
+    -webkit-text-fill-color: transparent;
   }
 </style>
