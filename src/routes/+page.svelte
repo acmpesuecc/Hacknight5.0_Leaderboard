@@ -129,7 +129,7 @@
 
   {#key leaderboard}
     {#await leaderboard}
-      <div>loading...</div>
+      <div class="text-center">loading...</div>
     {:then}
       <div
         class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
