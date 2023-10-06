@@ -8,79 +8,81 @@
   let leaderboard;
   let oldLeaderboard = [];
   const fetchLeaderboardData = async () => {
-  try {
-    const response = await fetch("http://smaran.ddns.net:3000/leaderboard_mat");
-    if (!response.ok) {
-      throw new Error("Reddy Anna Is Not Talking");
-    } else {
-      let json_response = await response.json();
+    try {
+      const response = await fetch(
+        "http://smaran.ddns.net:3000/leaderboard_mat"
+      );
+      if (!response.ok) {
+        throw new Error("Reddy Anna Is Not Talking");
+      } else {
+        let json_response = await response.json();
 
-      // temp since tech people aren't opening PRs -_-
-      // REMOVE BEFORE HACKNIGHT
-      json_response.push({
-        ID: 3,
-        CreatedAt: "0001-01-01T00:00:00Z",
-        UpdatedAt: "0001-01-01T00:00:00Z",
-        DeletedAt: null,
-        Name: "alfadelta10010",
-        Current_bounty: 15
-      });
-      json_response.push({
-        ID: 3,
-        CreatedAt: "0001-01-01T00:00:00Z",
-        UpdatedAt: "0001-01-01T00:00:00Z",
-        DeletedAt: null,
-        Name: "JoyenBenitto",
-        Current_bounty: 25
-      });
-      json_response.push({
-        ID: 3,
-        CreatedAt: "0001-01-01T00:00:00Z",
-        UpdatedAt: "0001-01-01T00:00:00Z",
-        DeletedAt: null,
-        Name: "PhoenixFlame101",
-        Current_bounty: 19
-      });
-      json_response.push({
-        ID: 3,
-        CreatedAt: "0001-01-01T00:00:00Z",
-        UpdatedAt: "0001-01-01T00:00:00Z",
-        DeletedAt: null,
-        Name: "NavinShrinivas",
-        Current_bounty: 60
-      });
-      json_response.push({
-        ID: 3,
-        CreatedAt: "0001-01-01T00:00:00Z",
-        UpdatedAt: "0001-01-01T00:00:00Z",
-        DeletedAt: null,
-        Name: "mukunddeepak",
-        Current_bounty: 20
-      });
-      json_response.push({
-        ID: 3,
-        CreatedAt: "0001-01-01T00:00:00Z",
-        UpdatedAt: "0001-01-01T00:00:00Z",
-        DeletedAt: null,
-        Name: "aadithyakrishnavamshi",
-        Current_bounty: 10
-      });
+        // temp since tech people aren't opening PRs -_-
+        // REMOVE BEFORE HACKNIGHT
+        json_response.push({
+          ID: 3,
+          CreatedAt: "0001-01-01T00:00:00Z",
+          UpdatedAt: "0001-01-01T00:00:00Z",
+          DeletedAt: null,
+          Name: "alfadelta10010",
+          Current_bounty: 15
+        });
+        json_response.push({
+          ID: 3,
+          CreatedAt: "0001-01-01T00:00:00Z",
+          UpdatedAt: "0001-01-01T00:00:00Z",
+          DeletedAt: null,
+          Name: "JoyenBenitto",
+          Current_bounty: 25
+        });
+        json_response.push({
+          ID: 3,
+          CreatedAt: "0001-01-01T00:00:00Z",
+          UpdatedAt: "0001-01-01T00:00:00Z",
+          DeletedAt: null,
+          Name: "PhoenixFlame101",
+          Current_bounty: 19
+        });
+        json_response.push({
+          ID: 3,
+          CreatedAt: "0001-01-01T00:00:00Z",
+          UpdatedAt: "0001-01-01T00:00:00Z",
+          DeletedAt: null,
+          Name: "NavinShrinivas",
+          Current_bounty: 60
+        });
+        json_response.push({
+          ID: 3,
+          CreatedAt: "0001-01-01T00:00:00Z",
+          UpdatedAt: "0001-01-01T00:00:00Z",
+          DeletedAt: null,
+          Name: "mukunddeepak",
+          Current_bounty: 20
+        });
+        json_response.push({
+          ID: 3,
+          CreatedAt: "0001-01-01T00:00:00Z",
+          UpdatedAt: "0001-01-01T00:00:00Z",
+          DeletedAt: null,
+          Name: "aadithyakrishnavamshi",
+          Current_bounty: 10
+        });
 
-      json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
-      if(JSON.stringify(json_response) != JSON.stringify(oldLeaderboard)){
-        console.log("Updating");
-        console.log(oldLeaderboard);
-        leaderboard = json_response;
-        oldLeaderboard = leaderboard;
+        json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
+        if (JSON.stringify(json_response) != JSON.stringify(oldLeaderboard)) {
+          console.log("Updating");
+          console.log(oldLeaderboard);
+          leaderboard = json_response;
+          oldLeaderboard = leaderboard;
+        }
       }
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
-};
+  };
 
   leaderboard = fetchLeaderboardData();
-  
+
   onMount(() => {
     setInterval(() => {
       fetchLeaderboardData();
@@ -124,79 +126,78 @@
       </div>
     </div>
   </div>
-  
 
   {#key leaderboard}
-  {#await leaderboard}
-  <div>loading...</div>
-  {:then}
-  <div
-    class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
-  >
-    {#if innerWidth <= 672}
-      {#each leaderboard as person, i}
-        <Card
-          index={i + 1}
-          username={person.Name}
-          points={person.Current_bounty}
-        />
-      {/each}
-    {:else}
-      {#if innerWidth >= 1440}
-        <CardRow
-          index={1}
-          username={leaderboard[0].Name}
-          points={leaderboard[0].Current_bounty}
-        />
-      {:else}
-        <Card
-          index={1}
-          username={leaderboard[0].Name}
-          points={leaderboard[0].Current_bounty}
-        />
-      {/if}
+    {#await leaderboard}
+      <div>loading...</div>
+    {:then}
       <div
-        class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
+        class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
       >
-        {#if innerWidth >= 1440}
-          <CardRow
-            index={2}
-            username={leaderboard[1].Name}
-            points={leaderboard[1].Current_bounty}
-          />
-          <CardRow
-            index={3}
-            username={leaderboard[2].Name}
-            points={leaderboard[2].Current_bounty}
-          />
-        {:else}
-          <Card
-            index={2}
-            username={leaderboard[1].Name}
-            points={leaderboard[1].Current_bounty}
-          />
-          <Card
-            index={3}
-            username={leaderboard[2].Name}
-            points={leaderboard[2].Current_bounty}
-          />
-        {/if}
-      </div>
-
-      <div class="grid-peeps grid justify-stretch items-center w-full">
-        {#each leaderboard as person, i}
-          {#if ![0, 1, 2].includes(i)}
+        {#if innerWidth <= 672}
+          {#each leaderboard as person, i}
             <Card
               index={i + 1}
               username={person.Name}
               points={person.Current_bounty}
             />
+          {/each}
+        {:else}
+          {#if innerWidth >= 1440}
+            <CardRow
+              index={1}
+              username={leaderboard[0].Name}
+              points={leaderboard[0].Current_bounty}
+            />
+          {:else}
+            <Card
+              index={1}
+              username={leaderboard[0].Name}
+              points={leaderboard[0].Current_bounty}
+            />
           {/if}
-        {/each}
+          <div
+            class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
+          >
+            {#if innerWidth >= 1440}
+              <CardRow
+                index={2}
+                username={leaderboard[1].Name}
+                points={leaderboard[1].Current_bounty}
+              />
+              <CardRow
+                index={3}
+                username={leaderboard[2].Name}
+                points={leaderboard[2].Current_bounty}
+              />
+            {:else}
+              <Card
+                index={2}
+                username={leaderboard[1].Name}
+                points={leaderboard[1].Current_bounty}
+              />
+              <Card
+                index={3}
+                username={leaderboard[2].Name}
+                points={leaderboard[2].Current_bounty}
+              />
+            {/if}
+          </div>
+
+          <div class="grid-peeps grid justify-stretch items-center w-full">
+            {#each leaderboard as person, i}
+              {#if ![0, 1, 2].includes(i)}
+                <Card
+                  index={i + 1}
+                  username={person.Name}
+                  points={person.Current_bounty}
+                />
+              {/if}
+            {/each}
+          </div>
+        {/if}
       </div>
-    {/if}
-  </div>
-  {/await}
+    {/await}
   {/key}
 </main>
 

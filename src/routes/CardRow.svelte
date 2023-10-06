@@ -69,7 +69,7 @@
   rel="stylesheet"
 />
 
-<main class={index == 1 ? "lg:w-1/2" : ""} transition:blur={{duration: 500}}>
+<main class={index == 1 ? "lg:w-1/2" : ""} transition:blur={{ duration: 500 }}>
   <body class="text-white">
     <div
       class="card flex m-3 p-4 bg-[#0F0913] rounded-xl items-center justify-between {index ==
