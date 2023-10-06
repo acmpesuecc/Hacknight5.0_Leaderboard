@@ -2,11 +2,90 @@
   import Background from "./Background.svelte";
   import Card from "./Card.svelte";
   import CardRow from "./CardRow.svelte";
-  export let data;
+  import { onMount } from "svelte";
   let innerWidth = 0;
 
-  let leaderboard = data.json_response;
-  leaderboard.sort((a, b) => b.Current_bounty - a.Current_bounty);
+  let leaderboard;
+  let oldLeaderboard = [];
+  const fetchLeaderboardData = async () => {
+  try {
+    const response = await fetch("http://smaran.ddns.net:3000/leaderboard_mat");
+    if (!response.ok) {
+      throw new Error("Reddy Anna Is Not Talking");
+    } else {
+      let json_response = await response.json();
+
+      // temp since tech people aren't opening PRs -_-
+      // REMOVE BEFORE HACKNIGHT
+      json_response.push({
+        ID: 3,
+        CreatedAt: "0001-01-01T00:00:00Z",
+        UpdatedAt: "0001-01-01T00:00:00Z",
+        DeletedAt: null,
+        Name: "alfadelta10010",
+        Current_bounty: 15
+      });
+      json_response.push({
+        ID: 3,
+        CreatedAt: "0001-01-01T00:00:00Z",
+        UpdatedAt: "0001-01-01T00:00:00Z",
+        DeletedAt: null,
+        Name: "JoyenBenitto",
+        Current_bounty: 25
+      });
+      json_response.push({
+        ID: 3,
+        CreatedAt: "0001-01-01T00:00:00Z",
+        UpdatedAt: "0001-01-01T00:00:00Z",
+        DeletedAt: null,
+        Name: "PhoenixFlame101",
+        Current_bounty: 19
+      });
+      json_response.push({
+        ID: 3,
+        CreatedAt: "0001-01-01T00:00:00Z",
+        UpdatedAt: "0001-01-01T00:00:00Z",
+        DeletedAt: null,
+        Name: "NavinShrinivas",
+        Current_bounty: 60
+      });
+      json_response.push({
+        ID: 3,
+        CreatedAt: "0001-01-01T00:00:00Z",
+        UpdatedAt: "0001-01-01T00:00:00Z",
+        DeletedAt: null,
+        Name: "mukunddeepak",
+        Current_bounty: 20
+      });
+      json_response.push({
+        ID: 3,
+        CreatedAt: "0001-01-01T00:00:00Z",
+        UpdatedAt: "0001-01-01T00:00:00Z",
+        DeletedAt: null,
+        Name: "aadithyakrishnavamshi",
+        Current_bounty: 10
+      });
+
+      json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
+      if(JSON.stringify(json_response) != JSON.stringify(oldLeaderboard)){
+        console.log("Updating");
+        console.log(oldLeaderboard);
+        leaderboard = json_response;
+        oldLeaderboard = leaderboard;
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+  leaderboard = fetchLeaderboardData();
+  
+  onMount(() => {
+    setInterval(() => {
+      fetchLeaderboardData();
+    }, 5000);
+  });
 </script>
 
 <svelte:window bind:innerWidth />
@@ -45,7 +124,12 @@
       </div>
     </div>
   </div>
+  
 
+  {#key leaderboard}
+  {#await leaderboard}
+  <div>loading...</div>
+  {:then}
   <div
     class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
   >
@@ -112,6 +196,8 @@
       </div>
     {/if}
   </div>
+  {/await}
+  {/key}
 </main>
 
 <style>
