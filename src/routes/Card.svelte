@@ -1,5 +1,8 @@
 <script>
   import { inview } from "svelte-inview";
+  import { blur } from "svelte/transition";
+
+  
 
   let innerWidth = 0;
   export let username;
@@ -71,7 +74,7 @@
 
 <svelte:window bind:innerWidth />
 
-<main class="{innerWidth <= 672 ? 'card-span-full' : ''} ">
+<main class="{innerWidth <= 672 ? 'card-span-full' : ''} " transition:blur={{duration: 500}}>
   <body class=" {index == 1 ? 'text-[#FFFBA4]' : 'text-white'} ">
     <div
       class="card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center {index ==
