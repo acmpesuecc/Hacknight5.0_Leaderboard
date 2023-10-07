@@ -7,7 +7,7 @@
 
 <main>
   <body>
-    <Background />
+    <Background info={user_details} maintainer />
     <div class="flex justify-center items-center my-12">
       <div class="image-container">
         <img
