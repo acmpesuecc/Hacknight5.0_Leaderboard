@@ -27,15 +27,15 @@
     ]);
 
   let innerHeight;
-  let background;
-  // TODO(ad-chaos): The reactive declaration works, but before that have to deal with svelte nonsense, so hardcoded to 6
-  let tilings = 6;
-  // $: {
-  //   console.log("tf bro?", background)
-  //   if(background != undefined) {
-  //     console.log(innerHeight, background.offsetHeight, Math.ceil(innerHeight / background.offsetHeight) + 1)
-  //   }
-  // }
+  let infoChunk;
+
+  function calcRepeats(viewPortHeight, infoChunk) {
+    if (infoChunk != undefined) {
+      return Math.ceil(innerHeight / infoChunk.offsetHeight);
+    }
+    return 5;
+  }
+  $: repeats = calcRepeats(innerHeight, infoChunk);
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,13 +49,13 @@
 
 <main class="unselect">
   <div class="text-4xl font-extrabold text-center" disabled>
-    {#each { length: tilings } as _}
-      <span class="chunk">
-        {#each binified as [name, value]}
-          {name}<span class="gradient">{value}</span>
-        {/each}
-      </span>
-    {/each}
+    <span class="chunk" bind:this={infoChunk}
+      >{#each binified as [name, value]}{name}<span class="gradient"
+          >{value}</span
+        >{/each}</span
+    >{#each { length: repeats } as _}{@html infoChunk
+        ? infoChunk.outerHTML
+        : ""}{/each}
   </div>
 </main>
 
@@ -87,6 +87,7 @@
     -ms-user-select: none;
     user-select: none;
   }
+
   .gradient {
     background: linear-gradient(
       90deg,
