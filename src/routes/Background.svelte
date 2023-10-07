@@ -2,9 +2,12 @@
   import { onMount, tick } from "svelte";
 
   export let info;
+  export let maintainer;
 
   function extractInfo(obj) {
-    return { id: obj.Name, vals: [obj.Current_bounty] };
+    return maintainer
+      ? { id: obj.Maintainer_name, vals: [obj.Points_allotted] }
+      : { id: obj.Name, vals: [obj.Current_bounty] };
   }
 
   function randInt(upperBound) {
@@ -26,16 +29,20 @@
       binString(extracted.vals)
     ]);
 
-  let innerHeight;
+  let outerHeight;
+  let outerWidth;
   let infoChunk;
 
   function calcRepeats(viewPortHeight, infoChunk) {
     if (infoChunk != undefined) {
-      return Math.ceil(innerHeight / infoChunk.offsetHeight);
+      const pixArea = outerHeight * outerWidth
+      const chunkArea = infoChunk.offsetHeight * infoChunk.offsetWidth
+      //HACK: adding 1 because probably the areas are not perfect?
+      return Math.ceil(pixArea / chunkArea) + 1;
     }
     return 5;
   }
-  $: repeats = calcRepeats(innerHeight, infoChunk);
+  $: repeats = calcRepeats(outerHeight, infoChunk);
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +52,7 @@
   rel="stylesheet"
 />
 
-<svelte:window bind:innerHeight />
+<svelte:window bind:outerHeight bind:outerWidth/>
 
 <main class="unselect">
   <div class="text-4xl font-extrabold text-center" disabled>
