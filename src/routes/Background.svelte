@@ -26,10 +26,6 @@
   }
 
   let binified = info
-    .then((info) => {
-      console.log(info);
-      return info;
-    })
     .map(extractInfo)
     .map((extracted) => [
       binString(chars(extracted.id).slice(0, randInt(6))),

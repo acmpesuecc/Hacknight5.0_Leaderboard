@@ -41,7 +41,7 @@
 
 <main>
   {#key leaderboard}
-    {#await leaderboard}
+    {#await leaderboard then}
       <Background info={leaderboard} />
     {/await}
   {/key}
