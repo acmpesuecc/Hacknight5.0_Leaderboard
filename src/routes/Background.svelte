@@ -1,6 +1,11 @@
 <script>
-  export let info;
-  export let maintainer;
+  export let info = [
+    {
+      Name: "Navin Shrinivas",
+      Current_bounty: 100
+    }
+  ];
+  export let maintainer = false;
 
   function extractInfo(obj) {
     return maintainer
@@ -21,6 +26,10 @@
   }
 
   let binified = info
+    .then((info) => {
+      console.log(info);
+      return info;
+    })
     .map(extractInfo)
     .map((extracted) => [
       binString(chars(extracted.id).slice(0, randInt(6))),

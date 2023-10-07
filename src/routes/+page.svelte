@@ -31,8 +31,8 @@
   leaderboard = fetchLeaderboardData();
 
   onMount(() => {
-    setInterval(() => {
-      fetchLeaderboardData();
+    setInterval(async () => {
+      await fetchLeaderboardData();
     }, 5000);
   });
 </script>
@@ -40,7 +40,11 @@
 <svelte:window bind:innerWidth />
 
 <main>
-  <Background info={leaderboard} />
+  {#key leaderboard}
+    {#await leaderboard}
+      <Background info={leaderboard} />
+    {/await}
+  {/key}
 
   <div
     class="flex flex-col h-[75vh] md:h-[80vh] lg:h-[100vh] justify-between mb-10"
