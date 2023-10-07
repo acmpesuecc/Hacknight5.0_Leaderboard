@@ -10,7 +10,7 @@
   const fetchLeaderboardData = async () => {
     try {
       const response = await fetch(
-        "http://smaran.ddns.net:3000/leaderboard_mat"
+        "https://hacknight.navinshrinivas.com/leaderboard_mat"
       );
       if (!response.ok) {
         throw new Error("Reddy Anna Is Not Talking");
@@ -70,8 +70,6 @@
 
         json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
         if (JSON.stringify(json_response) != JSON.stringify(oldLeaderboard)) {
-          console.log("Updating");
-          console.log(oldLeaderboard);
           leaderboard = json_response;
           oldLeaderboard = leaderboard;
         }
