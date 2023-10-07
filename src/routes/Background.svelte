@@ -1,6 +1,4 @@
 <script>
-  import { onMount, tick } from "svelte";
-
   export let info;
   export let maintainer;
 
@@ -33,16 +31,16 @@
   let outerWidth;
   let infoChunk;
 
-  function calcRepeats(viewPortHeight, infoChunk) {
+  function calcRepeats(viewPortHeight, viewPortWidth, infoChunk) {
     if (infoChunk != undefined) {
-      const pixArea = outerHeight * outerWidth
-      const chunkArea = infoChunk.offsetHeight * infoChunk.offsetWidth
-      //HACK: adding 1 because probably the areas are not perfect?
-      return Math.ceil(pixArea / chunkArea) + 1;
+      //HACK: multiplying 1.5 because probably the areas are not perfect?
+      const pixArea = viewPortWidth * viewPortHeight * 1.5;
+      const chunkArea = infoChunk.offsetHeight * infoChunk.offsetWidth;
+      return Math.ceil(pixArea / chunkArea);
     }
     return 5;
   }
-  $: repeats = calcRepeats(outerHeight, infoChunk);
+  $: repeats = calcRepeats(outerHeight, outerWidth, infoChunk);
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,7 +50,7 @@
   rel="stylesheet"
 />
 
-<svelte:window bind:outerHeight bind:outerWidth/>
+<svelte:window bind:outerHeight bind:outerWidth />
 
 <main class="unselect">
   <div class="text-4xl font-extrabold text-center" disabled>
