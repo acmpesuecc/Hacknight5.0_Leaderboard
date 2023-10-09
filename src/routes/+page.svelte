@@ -3,36 +3,20 @@
   import Card from "./Card.svelte";
   import CardRow from "./CardRow.svelte";
   import { onMount } from "svelte";
+  import { invalidate } from "$app/navigation";
+
+  export let data;
   let innerWidth = 0;
 
-  let leaderboard;
-  let oldLeaderboard = [];
-  const fetchLeaderboardData = async () => {
-    try {
-      const response = await fetch(
-        "https://hacknight.navinshrinivas.com/leaderboard_mat"
-      );
-      if (!response.ok) {
-        throw new Error("Reddy Anna Is Not Talking");
-      } else {
-        let json_response = await response.json();
+  let leaderboard = {};
 
-        json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
-        if (JSON.stringify(json_response) != JSON.stringify(oldLeaderboard)) {
-          leaderboard = json_response;
-          oldLeaderboard = leaderboard;
-        }
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  leaderboard = fetchLeaderboardData();
+  $: if (JSON.stringify(leaderboard) !== JSON.stringify(data.leaderboard)) {
+    leaderboard = data.leaderboard;
+  }
 
   onMount(() => {
-    setInterval(async () => {
-      await fetchLeaderboardData();
+    setInterval(() => {
+      invalidate("leaderboard");
     }, 5000);
   });
 </script>
@@ -40,11 +24,7 @@
 <svelte:window bind:innerWidth />
 
 <main>
-  {#key leaderboard}
-    {#await leaderboard then}
-      <Background info={leaderboard} />
-    {/await}
-  {/key}
+  <Background info={leaderboard} />
 
   <div
     class="flex flex-col h-[75vh] md:h-[80vh] lg:h-[100vh] justify-between mb-10"
@@ -78,78 +58,72 @@
     </div>
   </div>
 
-  {#key leaderboard}
-    {#await leaderboard}
-      <div class="text-center">loading...</div>
-    {:then}
+  <div
+    class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
+  >
+    {#if innerWidth <= 672}
+      {#each leaderboard as person, i}
+        <Card
+          index={i + 1}
+          username={person.Name}
+          points={person.Current_bounty}
+        />
+      {/each}
+    {:else}
+      {#if innerWidth >= 1440}
+        <CardRow
+          index={1}
+          username={leaderboard[0].Name}
+          points={leaderboard[0].Current_bounty}
+        />
+      {:else}
+        <Card
+          index={1}
+          username={leaderboard[0].Name}
+          points={leaderboard[0].Current_bounty}
+        />
+      {/if}
       <div
-        class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
+        class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
       >
-        {#if innerWidth <= 672}
-          {#each leaderboard as person, i}
+        {#if innerWidth >= 1440}
+          <CardRow
+            index={2}
+            username={leaderboard[1].Name}
+            points={leaderboard[1].Current_bounty}
+          />
+          <CardRow
+            index={3}
+            username={leaderboard[2].Name}
+            points={leaderboard[2].Current_bounty}
+          />
+        {:else}
+          <Card
+            index={2}
+            username={leaderboard[1].Name}
+            points={leaderboard[1].Current_bounty}
+          />
+          <Card
+            index={3}
+            username={leaderboard[2].Name}
+            points={leaderboard[2].Current_bounty}
+          />
+        {/if}
+      </div>
+
+      <div class="grid-peeps grid justify-stretch items-center w-full">
+        {#each leaderboard as person, i}
+          {#if ![0, 1, 2].includes(i)}
             <Card
               index={i + 1}
               username={person.Name}
               points={person.Current_bounty}
             />
-          {/each}
-        {:else}
-          {#if innerWidth >= 1440}
-            <CardRow
-              index={1}
-              username={leaderboard[0].Name}
-              points={leaderboard[0].Current_bounty}
-            />
-          {:else}
-            <Card
-              index={1}
-              username={leaderboard[0].Name}
-              points={leaderboard[0].Current_bounty}
-            />
           {/if}
-          <div
-            class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
-          >
-            {#if innerWidth >= 1440}
-              <CardRow
-                index={2}
-                username={leaderboard[1].Name}
-                points={leaderboard[1].Current_bounty}
-              />
-              <CardRow
-                index={3}
-                username={leaderboard[2].Name}
-                points={leaderboard[2].Current_bounty}
-              />
-            {:else}
-              <Card
-                index={2}
-                username={leaderboard[1].Name}
-                points={leaderboard[1].Current_bounty}
-              />
-              <Card
-                index={3}
-                username={leaderboard[2].Name}
-                points={leaderboard[2].Current_bounty}
-              />
-            {/if}
-          </div>
-
-          <div class="grid-peeps grid justify-stretch items-center w-full">
-            {#each leaderboard as person, i}
-              {#if ![0, 1, 2].includes(i)}
-                <Card
-                  index={i + 1}
-                  username={person.Name}
-                  points={person.Current_bounty}
-                />
-              {/if}
-            {/each}
-          </div>
-        {/if}
+        {/each}
       </div>
-    {/await}
-  {/key}
+    {/if}
+  </div>
 </main>
 
 <style>

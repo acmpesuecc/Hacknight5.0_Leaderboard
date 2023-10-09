@@ -1,5 +1,3 @@
-let user_details;
-
 export async function load({ params, fetch }) {
   let username = params.slug;
   try {

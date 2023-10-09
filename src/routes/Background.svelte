@@ -1,8 +1,8 @@
 <script>
   export let info = [
     {
-      Name: "Navin Shrinivas",
-      Current_bounty: 100
+      Name: "Navin uWu",
+      Current_bounty: 27
     }
   ];
   export let maintainer = false;
@@ -59,7 +59,7 @@
 
 <main class="unselect">
   <div class="text-4xl font-extrabold text-center" disabled>
-    <span class="chunk" bind:this={infoChunk}
+    <span bind:this={infoChunk}
       >{#each binified as [name, value]}{name}<span class="gradient"
           >{value}</span
         >{/each}</span
