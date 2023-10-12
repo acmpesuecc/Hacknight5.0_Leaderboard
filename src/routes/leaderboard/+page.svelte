@@ -30,11 +30,13 @@
 
   leaderboard = fetchLeaderboardData();
 
+  // EMERGENCY: COMMENT OUT THE IN CASE OF POLLING SCREW UP
   onMount(() => {
     setInterval(async () => {
       await fetchLeaderboardData();
     }, 5000);
   });
+  //
 </script>
 
 <svelte:window bind:innerWidth />

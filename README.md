@@ -1,4 +1,5 @@
 ## Developing
+
 1. Fork this repo and clone it to your local system
 2. Run `npm install` to install all the dependencies
 3. Start a development server on your local system with
@@ -9,7 +10,6 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
-
 
 ```bash
 npm run build
