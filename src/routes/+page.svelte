@@ -15,7 +15,7 @@
   <Background />
 
   <div
-    class="flex flex-col h-[75vh] md:h-[80vh] lg:h-[100vh] justify-between mb-10"
+    class="flex flex-col min-h-[75vh] md:min-h-[80vh] lg:min-h-[100vh] justify-between mb-10"
   >
     <div
       class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10"
