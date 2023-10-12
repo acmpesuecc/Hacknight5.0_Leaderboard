@@ -236,7 +236,7 @@
         </div>
       {/if}
 
-      <div class="numbersWrapper mb-4">
+      <div class="numbersWrapper mt-4 mb-4">
         <div class="binaryNumbers">
           {#each binaryArray as binary}
             <pre class="binaryNumber">{" " + binary + " "}</pre>
