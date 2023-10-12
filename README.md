@@ -19,6 +19,12 @@ npm run build
 
 ### Will be updated once we've added home page
 
+## Issues
+
+- We made this website and we think it's perfect, hence, the lack of issues
+- We expect the contributors to make issues and they will be awarded extra for the same
+- So go give our site some criticism and solve them!
+
 ## Maintainer
 
 Anurag Rao [@anuragrao04](https://github.com/anuragrao04)
