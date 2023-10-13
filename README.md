@@ -17,7 +17,10 @@ npm run build
 
 ## File Structure
 
-```src
+- Most of your work will be in the `src/` folder and here's the folder structure for it:
+
+```bash
+src
 ├── app.css
 ├── app.html
 ├── lib
