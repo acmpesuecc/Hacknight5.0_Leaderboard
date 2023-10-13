@@ -84,11 +84,11 @@
   <div
     class="flex flex-col min-h-[75vh] md:min-h-[80vh] lg:min-h-[100vh] justify-between mb-10"
   >
-    <div
-      class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10"
+    <a
+      class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10" href="/"
     >
       <img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4 max-w-md" />
-    </div>
+    </a>
 
     <div
       class="hero w-screen flex flex-col xl:flex-row justify-between items-center p-2 lg:p-14"
