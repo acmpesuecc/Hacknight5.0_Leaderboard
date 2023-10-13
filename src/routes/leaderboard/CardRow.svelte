@@ -79,7 +79,7 @@
       onclick="window.location='{username}'"
     >
       <div
-        class="rank font-bold text-[#fffba4] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
+        class="rank font-bold text-[#fffba4] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 opacity-100{index ==
         1
           ? 'text-[#ffffba4]'
           : ''} "
@@ -100,8 +100,8 @@
         />
         <h1
           class="{'username' +
-            index} text-[#fffba4] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
-            ? 'text-[#FFFBA4]'
+            index} text-[#fffba4] font-bold m-4 mb-1 lg:m-4 md:mb-1 opacity-100{index == 1
+            ? 'text-[#ffffba4] opacity-100'
             : ''} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
         >
           {usernameText.toUpperCase()}
@@ -115,26 +115,26 @@
           }}
         />
         <div
-          class="score text-3xl mb-2 lg:p-2 {index == 1
+          class="score text-3xl mb-2 lg:p-2 opacity-100{index == 1
             ? 'text-[#FFFBA4]'
             : ''} "
         >
           {scoreText}
         </div>
       </div>
-      <div class="relative m-2">
+      <div class="relative m-2 opacity-100">
         <img
           src="card_background.svg"
           alt="background_image"
           class="w-40 h-auto block"
         />
-        <div class="absolute inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 flex items-center justify-center opacity-100">
           <img
             src="https://github.com/{username}.png"
             alt=""
             class="rounded-md w-32 absolute {index % 2 == 0
               ? 'rotate-12'
-              : '-rotate-12'} h-auto"
+              : '-rotate-12'} h-auto opacity-100"
           />
         </div>
       </div>
