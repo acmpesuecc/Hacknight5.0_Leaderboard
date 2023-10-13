@@ -50,6 +50,7 @@
     "https://github.com/acmpesuecc/weatherforecast",
     "https://github.com/acmpesuecc/Employee_Attrition_EDA_Prediction",
     "https://github.com/acmpesuecc/Vonic",
+    "https://github.com/acmpesuecc/Logic-Gate-Simulation",
     // Hardware_Wave_1and2and3 (new first)
     "https://github.com/acmpesuecc/Morse",
     "https://github.com/acmpesuecc/SpotiFetch",
