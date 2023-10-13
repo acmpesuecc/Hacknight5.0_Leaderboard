@@ -42,7 +42,7 @@ src
 6 directories, 12 files
 ```
 
-Every folder inside the `routes/` folder is a route. Every folder I mentioned, has a `+page.svelte` inside it. This defines the contents of that particular page. The `+page.svelte` inside the routes folder and outside any other folder inside the `routes/` directory defines what's there in the root route. Refer the Svelte Documentation for more information. Feel free to approach the maintainer too. 
+Every folder inside the `routes/` folder is a route. Every folder I mentioned, has a `+page.svelte` inside it. This defines the contents of that particular page. The `+page.svelte` inside the routes folder and outside any other folder inside the `routes/` directory defines what's there in the root route. Refer the Svelte Documentation for more information. Feel free to approach the maintainer too.
 
 ## Issues
 

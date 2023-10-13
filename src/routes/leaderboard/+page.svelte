@@ -3,10 +3,13 @@
   import Card from "./Card.svelte";
   import CardRow from "./CardRow.svelte";
   import { onMount } from "svelte";
+  import {writable} from "svelte/store"
   let innerWidth = 0;
 
   let leaderboard;
   let oldLeaderboard = [];
+  let timer;
+  let canScroll = true;
 
   const fetchLeaderboardData = async () => {
     try {
@@ -31,16 +34,44 @@
 
   leaderboard = fetchLeaderboardData();
 
-  // EMERGENCY: COMMENT OUT THE IN CASE OF POLLING SCREWS UP
   onMount(() => {
+    // EMERGENCY: COMMENT OUT THE IN CASE OF POLLING SCREWS UP
     setInterval(async () => {
       await fetchLeaderboardData();
     }, 5000);
-  });
-  //
+
+    function scrollDown() {
+        canScroll && window.scrollTo({ top: window.scrollY + window.innerHeight, behavior: 'smooth' });
+        removeEventListeners();
+  }
+
+  function startTimer() {
+    clearTimeout(timer);
+    timer = setTimeout(scrollDown, 2000);
+  }
+
+  function handleActivity() {
+    canScroll = false
+    startTimer();
+  }
+
+  function removeEventListeners() {
+    window.removeEventListener('scroll', handleActivity);
+    window.removeEventListener('mousemove', handleActivity);
+    window.removeEventListener('keydown', handleActivity);
+  }
+
+  window.addEventListener('scroll', handleActivity);
+  window.addEventListener('mousemove', handleActivity);
+  window.addEventListener('keydown', handleActivity);
+
+  startTimer();
+
+});
+
 </script>
 
-<svelte:window bind:innerWidth />
+<svelte:window bind:innerWidth/>
 
 <main>
   {#key leaderboard}
