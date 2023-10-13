@@ -13,7 +13,6 @@
     "https://github.com/acmpesuecc/ResumeMaker",
     "https://github.com/acmpesuecc/timetracker-server",
     "https://github.com/acmpesuecc/scraper",
-    "https://github.com/acmpesuecc/pesu-bot-2025",
     "https://github.com/acmpesuecc/ASCII-Camera",
     "https://github.com/acmpesuecc/growpal-flutter",
     "https://github.com/acmpesuecc/qutebits",
