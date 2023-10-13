@@ -1,7 +1,7 @@
 <script>
   import Background from "../Background.svelte";
   let innerWidth = 0;
-
+  let releaseRepos = false;
   let repos = [
     // Transferred
     "https://github.com/acmpesuecc/kinto-svelte",
@@ -79,7 +79,6 @@
 
   for (let repo of repos) {
     let match = repo.match(regex);
-    console.log(match);
     repoNames.push(match[1]);
   }
 </script>
@@ -88,28 +87,34 @@
 
 <main>
   <Background />
-  <div
-    class="text-3xl lg:text-7xl font-bold text-center mt-4 lg:mt-6 text-white"
-  >
-    GitHub Repos List
-  </div>
-  <div class="bg-[#0F0913] mx-6 my-8 lg:my-10 lg:mx-10">
+  {#if releaseRepos}
     <div
-      class="grid grid-cols-1 p-2 lg:px-4 lg:py-8 gap-x-8 lg:grid-cols-3 justify-center items-center"
+      class="text-3xl lg:text-7xl font-bold text-center mt-4 lg:mt-6 text-white"
     >
-      {#each repos as repo, i}
-        <a
-          href={repo}
-          class="flex justify-center items-center mx-4"
-          target="_blank"
-        >
-          <button
-            class="w-full lg:mr-2 mb-4 p-3 break-words border border-[#231e25] hover:border-[#d2b863] active:border-[#d2b863] text-white rounded-md bg-[#231e25]"
-          >
-            {repoNames[i]}
-          </button>
-        </a>
-      {/each}
+      GitHub Repos List
     </div>
-  </div>
+    <div class="bg-[#0F0913] mx-6 my-8 lg:my-10 lg:mx-10">
+      <div
+        class="grid grid-cols-1 p-2 lg:px-4 lg:py-8 gap-x-8 lg:grid-cols-3 justify-center items-center"
+      >
+        {#each repos as repo, i}
+          <a
+            href={repo}
+            class="flex justify-center items-center mx-4"
+            target="_blank"
+          >
+            <button
+              class="w-full lg:mr-2 mb-4 p-3 break-words border border-[#231e25] hover:border-[#d2b863] active:border-[#d2b863] text-white rounded-md bg-[#231e25]"
+            >
+              {repoNames[i]}
+            </button>
+          </a>
+        {/each}
+      </div>
+    </div>
+  {:else}
+    <div class="flex justify-center items-center h-screen">
+      <div class="message text-center text-3xl">Repos not yet released!</div>
+    </div>
+  {/if}
 </main>

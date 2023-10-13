@@ -3,7 +3,7 @@
   let days = 0;
   let hours = 0;
   let minutes = 0;
-  const targetDate = new Date("October 13, 2023 17:30:00").getTime();
+  const targetDate = new Date("October 13, 2023 17:00:00").getTime();
 
   setInterval(() => {
     const now = new Date().getTime();
@@ -49,8 +49,8 @@
 <svelte:window bind:innerWidth />
 
 <main>
-  <body class="h-screen flex flex-col justify-between bg-[#0F0913]">
-    <div class="numbersWrapper mt-4">
+  <body class="min-h-screen flex flex-col justify-between bg-[#0F0913]">
+    <div class="numbersWrapper pt-4">
       <div class="binaryNumbers">
         {#each binaryArray as binary}
           <pre class="binaryNumber">{" " + binary + " "}</pre>
@@ -228,7 +228,7 @@
         </div>
       {/if}
 
-      <div class="numbersWrapper mt-4 mb-4">
+      <div class="numbersWrapper pb-4">
         <div class="binaryNumbers">
           {#each binaryArray as binary}
             <pre class="binaryNumber">{" " + binary + " "}</pre>

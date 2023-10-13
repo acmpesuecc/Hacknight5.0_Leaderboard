@@ -7,12 +7,13 @@
 
   let leaderboard;
   let oldLeaderboard = [];
+
   const fetchLeaderboardData = async () => {
     try {
       const response = await fetch(
         "https://hacknight.navinshrinivas.com/leaderboard_mat"
       );
-      if (!response.ok) {
+      if (!response || !response.ok) {
         throw new Error("Reddy Anna Is Not Talking");
       } else {
         let json_response = await response.json();
@@ -30,7 +31,7 @@
 
   leaderboard = fetchLeaderboardData();
 
-  // EMERGENCY: COMMENT OUT THE IN CASE OF POLLING SCREW UP
+  // EMERGENCY: COMMENT OUT THE IN CASE OF POLLING SCREWS UP
   onMount(() => {
     setInterval(async () => {
       await fetchLeaderboardData();
@@ -80,78 +81,96 @@
     </div>
   </div>
 
-  {#key leaderboard}
-    {#await leaderboard}
-      <div class="text-center">loading...</div>
-    {:then}
-      <div
-        class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
-      >
-        {#if innerWidth <= 672}
-          {#each leaderboard as person, i}
-            <Card
-              index={i + 1}
-              username={person.Name}
-              points={person.Current_bounty}
-            />
-          {/each}
-        {:else}
-          {#if innerWidth >= 1440}
-            <CardRow
-              index={1}
-              username={leaderboard[0].Name}
-              points={leaderboard[0].Current_bounty}
-            />
-          {:else}
-            <Card
-              index={1}
-              username={leaderboard[0].Name}
-              points={leaderboard[0].Current_bounty}
-            />
-          {/if}
-          <div
-            class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
-          >
-            {#if innerWidth >= 1440}
-              <CardRow
-                index={2}
-                username={leaderboard[1].Name}
-                points={leaderboard[1].Current_bounty}
-              />
-              <CardRow
-                index={3}
-                username={leaderboard[2].Name}
-                points={leaderboard[2].Current_bounty}
-              />
-            {:else}
-              <Card
-                index={2}
-                username={leaderboard[1].Name}
-                points={leaderboard[1].Current_bounty}
-              />
-              <Card
-                index={3}
-                username={leaderboard[2].Name}
-                points={leaderboard[2].Current_bounty}
-              />
-            {/if}
-          </div>
-
-          <div class="grid-peeps grid justify-stretch items-center w-full">
+  {#await leaderboard}
+    <div class="text-center">loading...</div>
+  {:then}
+    {#key leaderboard}
+      {#if leaderboard.length > 0}
+        <div
+          class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
+        >
+          {#if innerWidth <= 672}
             {#each leaderboard as person, i}
-              {#if ![0, 1, 2].includes(i)}
-                <Card
-                  index={i + 1}
-                  username={person.Name}
-                  points={person.Current_bounty}
+              <Card
+                index={i + 1}
+                username={person.Name}
+                points={person.Current_bounty}
+              />
+            {/each}
+          {:else}
+            {#if innerWidth >= 1440}
+              {#if leaderboard.length >= 1}
+                <CardRow
+                  index={1}
+                  username={leaderboard[0].Name}
+                  points={leaderboard[0].Current_bounty}
                 />
               {/if}
-            {/each}
-          </div>
-        {/if}
-      </div>
-    {/await}
-  {/key}
+            {:else if leaderboard.length >= 1}
+              <Card
+                index={1}
+                username={leaderboard[0].Name}
+                points={leaderboard[0].Current_bounty}
+              />
+            {/if}
+            <div
+              class="grid-wrapper2-3 grid grid-cols-2 items-stretch justify-stretch"
+            >
+              {#if innerWidth >= 1440}
+                {#if leaderboard.length >= 2}
+                  <CardRow
+                    index={2}
+                    username={leaderboard[1].Name}
+                    points={leaderboard[1].Current_bounty}
+                  />
+                {/if}
+
+                {#if leaderboard.length >= 3}
+                  <CardRow
+                    index={3}
+                    username={leaderboard[2].Name}
+                    points={leaderboard[2].Current_bounty}
+                  />
+                {/if}
+              {:else}
+                {#if leaderboard.length >= 2}
+                  <Card
+                    index={2}
+                    username={leaderboard[1].Name}
+                    points={leaderboard[1].Current_bounty}
+                  />
+                {/if}
+
+                {#if leaderboard.length >= 3}
+                  <Card
+                    index={3}
+                    username={leaderboard[2].Name}
+                    points={leaderboard[2].Current_bounty}
+                  />
+                {/if}
+              {/if}
+            </div>
+
+            <div class="grid-peeps grid justify-stretch items-center w-full">
+              {#each leaderboard as person, i}
+                {#if ![0, 1, 2].includes(i)}
+                  <Card
+                    index={i + 1}
+                    username={person.Name}
+                    points={person.Current_bounty}
+                  />
+                {/if}
+              {/each}
+            </div>
+          {/if}
+        </div>
+      {:else}
+        <div class="message text-center text-3xl pb-10">
+          We are waiting for our first participant!
+        </div>
+      {/if}
+    {/key}
+  {/await}
 </main>
 
 <style>
