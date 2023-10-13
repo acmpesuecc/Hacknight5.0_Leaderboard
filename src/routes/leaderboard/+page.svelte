@@ -10,6 +10,7 @@
   let oldLeaderboard = [];
   let timer;
   let canScroll = true;
+  let lbw;
 
   const fetchLeaderboardData = async () => {
     try {
@@ -41,7 +42,7 @@
     }, 5000);
 
     function scrollDown() {
-        canScroll && window.scrollTo({ top: window.scrollY + window.innerHeight, behavior: 'smooth' });
+        lbw.scrollIntoView({behavior: 'smooth'});
         removeEventListeners();
   }
 
@@ -119,6 +120,7 @@
       {#if leaderboard.length > 0}
         <div
           class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
+          bind:this={lbw}
         >
           {#if innerWidth <= 672}
             {#each leaderboard as person, i}
