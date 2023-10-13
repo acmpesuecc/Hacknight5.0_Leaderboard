@@ -76,15 +76,15 @@
   class="{innerWidth <= 672 ? 'card-span-full' : ''} "
   transition:blur={{ duration: 500 }}
 >
-  <body class=" {index == 1 ? 'text-[#ad832d]' : 'text-white'} ">
+  <body class=" {index == 1 ? 'card-gold' : ''} ">
     <div
       class="card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913]/100 rounded-xl justify-center items-center {index ==
       1
         ? 'card-gold'
-        : ''} cursor-pointer"
+        : 'card'} cursor-pointer"
       onclick="window.location='{username}'"
     >
-      <div class="rank font-bold text-4xl text-center">
+      <div class="rank font-bold text-4xl text-center ">
         {index}
       </div>
       <div class="flex flex-col col-span-2 items-center">
@@ -105,7 +105,7 @@
           </div>
         </div>
 
-        <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center ">
           <div
             use:inview={{ unobserveOnEnter: true, rootMargin: "-5%" }}
             on:change={({ detail }) => {
@@ -141,18 +141,13 @@
 <style>
   .card {
     border: 1px solid #d2b863;
-    /* background: linear-gradient(
-      156deg,
-      rgba(239, 237, 239, 0.04) 0%,
-      rgba(0, 0, 0, 0.04) 92.3%
-    ); */
     background-color: #0F0913;
     color: #fffba4;
     opacity: 1;
   }
 
   .card-gold {
-    border: 3px solid #d2b863;
+    border: 5px solid #d2b863;
     color: #ad832d;
     background-color: #0f0913;
   }

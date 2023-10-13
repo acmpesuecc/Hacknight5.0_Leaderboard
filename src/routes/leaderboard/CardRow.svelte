@@ -79,9 +79,9 @@
       onclick="window.location='{username}'"
     >
       <div
-        class="rank font-bold text-[#EFEDEF] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
+        class="rank font-bold text-[#fffba4] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
         1
-          ? 'text-[#FFFBA4]'
+          ? 'text-[#ffffba4]'
           : ''} "
       >
         {index}
@@ -100,7 +100,7 @@
         />
         <h1
           class="{'username' +
-            index} text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
+            index} text-[#fffba4] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
             ? 'text-[#FFFBA4]'
             : ''} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
         >
@@ -144,16 +144,16 @@
 
 <style>
   .card {
-    border: 1px solid rgb(101, 95, 103);
-    background: linear-gradient(
-      156deg,
-      rgba(239, 237, 239, 0.04) 0%,
-      rgba(0, 0, 0, 0.04) 92.3%
-    );
-    backdrop-filter: blur(5px);
+    border: 1px solid #d2b863;
+    background-color: #0F0913;
+    color: #fffba4;
+    opacity: 1;
   }
 
   .card-gold {
-    border-color: #d2b863;
+    border: 5px solid #d2b863;
+    color: #ad832d;
+    background-color: #0f0913;
   }
+
 </style>
