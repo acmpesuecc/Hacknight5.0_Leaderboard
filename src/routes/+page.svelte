@@ -3,7 +3,7 @@
   let days = 0;
   let hours = 0;
   let minutes = 0;
-  const targetDate = new Date("October 13, 2023 17:00:00").getTime();
+  const targetDate = new Date("October 14, 2023 10:00:00").getTime();
 
   setInterval(() => {
     const now = new Date().getTime();
