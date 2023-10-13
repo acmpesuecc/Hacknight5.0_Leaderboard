@@ -78,7 +78,7 @@
 >
   <body class=" {index == 1 ? 'text-[#FFFBA4]' : 'text-white'} ">
     <div
-      class="card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center {index ==
+      class="card-opaque card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center opacity-100 backdrop-blur-none {index ==
       1
         ? 'card-gold'
         : ''} cursor-pointer"
@@ -141,12 +141,13 @@
 <style>
   .card {
     border: 1px solid rgb(101, 95, 103);
-    background: linear-gradient(
+    /* background: linear-gradient(
       156deg,
       rgba(239, 237, 239, 0.04) 0%,
       rgba(0, 0, 0, 0.04) 92.3%
-    );
-    backdrop-filter: blur(5px);
+    ); */
+    background: rgb(239,237,239,0);
+    backdrop-filter: blur(0);
   }
 
   .card-gold {

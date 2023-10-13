@@ -87,7 +87,7 @@
     {#key leaderboard}
       {#if leaderboard.length > 0}
         <div
-          class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
+          class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center backdrop-blur-sm opacity-60"
         >
           {#if innerWidth <= 672}
             {#each leaderboard as person, i}
