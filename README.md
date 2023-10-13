@@ -54,6 +54,6 @@ Every folder inside the `routes/` folder is a route. Every folder I mentioned, h
 
 Anurag Rao [@anuragrao04](https://github.com/anuragrao04)
 
-email: [raoanu2004@gmail.com](mailto:raoanu2004@gmail.com)
+Email: [raoanu2004@gmail.com](mailto:raoanu2004@gmail.com)
 
-phone: 9663006833
+Phone: 9663006833
