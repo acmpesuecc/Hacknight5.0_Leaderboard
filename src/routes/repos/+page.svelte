@@ -1,7 +1,7 @@
 <script>
   import Background from "../Background.svelte";
   let innerWidth = 0;
-  let releaseRepos = false;
+  let releaseRepos = true;
   let repos = [
     // Software_Wave_1_Repos
     "https://github.com/acmpesuecc/riscv-instr-gen",
