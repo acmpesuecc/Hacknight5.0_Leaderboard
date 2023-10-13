@@ -76,9 +76,9 @@
   class="{innerWidth <= 672 ? 'card-span-full' : ''} "
   transition:blur={{ duration: 500 }}
 >
-  <body class=" {index == 1 ? 'text-[#FFFBA4]' : 'text-white'} ">
+  <body class=" {index == 1 ? 'text-[#ad832d]' : 'text-white'} ">
     <div
-      class="card-opaque card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center opacity-100 backdrop-blur-none {index ==
+      class="card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913]/100 rounded-xl justify-center items-center {index ==
       1
         ? 'card-gold'
         : ''} cursor-pointer"
@@ -140,18 +140,21 @@
 
 <style>
   .card {
-    border: 1px solid rgb(101, 95, 103);
+    border: 1px solid #d2b863;
     /* background: linear-gradient(
       156deg,
       rgba(239, 237, 239, 0.04) 0%,
       rgba(0, 0, 0, 0.04) 92.3%
     ); */
-    background: rgb(239,237,239,0);
-    backdrop-filter: blur(0);
+    background-color: #0F0913;
+    color: #fffba4;
+    opacity: 1;
   }
 
   .card-gold {
-    border-color: #d2b863;
+    border: 3px solid #d2b863;
+    color: #ad832d;
+    background-color: #0f0913;
   }
 
   .card-span-full {
