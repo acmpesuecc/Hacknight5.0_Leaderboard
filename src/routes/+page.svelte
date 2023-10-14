@@ -3,24 +3,24 @@
   let days = 0;
   let hours = 0;
   let minutes = 0;
-  const targetDate = new Date("October 14, 2023 10:00:00").getTime();
+  // const targetDate = new Date("October 14, 2023 10:00:00").getTime();
 
-  setInterval(() => {
-    const now = new Date().getTime();
+  // setInterval(() => {
+  //   const now = new Date().getTime();
 
-    const remainingTime = targetDate - now;
+  //   const remainingTime = targetDate - now;
 
-    days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-    hours = Math.floor(
-      (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+  //   days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+  //   hours = Math.floor(
+  //     (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  //   );
+  //   minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
 
-    if (remainingTime < 0) {
-      clearInterval(this);
-      console.log("Countdown finished");
-    }
-  }, 1000);
+  //   if (remainingTime < 0) {
+  //     clearInterval(this);
+  //     console.log("Countdown finished");
+  //   }
+  // }, 1000);
 
   let contents =
     "01001111 01110000 01100101 01101110 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 01001111 01110000 01100101 01101110 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 01001111 01110000 01100101 01101110 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100";
