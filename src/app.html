@@ -8,5 +8,27 @@
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
+    <div class="hero-section">
+    </div>
+    <div class="leaderboard-section">
+    </div>
+
+    <script>
+        const heroVisibilityTime = 5000;
+        let userInteractionDetected = false;
+        function autoScrollToLeaderboard() {
+            if (!userInteractionDetected) {
+                const leaderboardSection = document.querySelector('.leaderboard-section');
+                if (leaderboardSection) {
+                    leaderboardSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+        setTimeout(autoScrollToLeaderboard, heroVisibilityTime);
+        window.addEventListener('scroll', () => {
+            userInteractionDetected = true;
+        });
+    </script>
+  
   </body>
 </html>
