@@ -74,15 +74,15 @@
     <div
       class="card flex m-3 p-4 bg-[#0F0913] rounded-xl items-center justify-between {index ==
       1
-        ? 'card-gold'
+        ? 'card-green'
         : ''} cursor-pointer"
       onclick="window.location='{username}'"
     >
       <div
         class="rank font-bold text-[#EFEDEF] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
         1
-          ? 'text-[#FFFBA4]'
-          : ''} "
+          ? 'text-[#50DA4C]'
+          : 'text-[#FFDBFF]'} "
       >
         {index}
       </div>
@@ -101,8 +101,8 @@
         <h1
           class="{'username' +
             index} text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
-            ? 'text-[#FFFBA4]'
-            : ''} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
+            ? 'text-[#50DA4C]'
+            : 'text-[#FFDBFF]'} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
         >
           {usernameText.toUpperCase()}
         </h1>
@@ -116,8 +116,8 @@
         />
         <div
           class="score text-3xl mb-2 lg:p-2 {index == 1
-            ? 'text-[#FFFBA4]'
-            : ''} "
+            ? 'text-[#50DA4C]'
+            : 'text-[#FFDBFF]'} "
         >
           {scoreText}
         </div>
@@ -144,7 +144,7 @@
 
 <style>
   .card {
-    border: 1px solid rgb(101, 95, 103);
+    border: 1px solid #FF8BFF;
     background: linear-gradient(
       156deg,
       rgba(239, 237, 239, 0.04) 0%,
@@ -153,7 +153,7 @@
     backdrop-filter: blur(5px);
   }
 
-  .card-gold {
-    border-color: #d2b863;
+  .card-green {
+    border-color: #50DA4C;
   }
 </style>

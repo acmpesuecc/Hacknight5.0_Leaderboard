@@ -63,7 +63,7 @@
       </div>
 
       <div class="w-full flex justify-center items-center">
-        <img src="hf_beige.png" class="w-2/3 lg:w-1/2" alt="logo" />
+        <img src="hf_beige.png" class="w-2/3 lg:w-1/3" alt="logo" />
       </div>
     </div>
     <div
@@ -93,7 +93,7 @@
         </a>
       </div>
 
-      <img src="hf_11.svg" alt="" class="m-4 w-4/12 lg:w-2/12" />
+      <img src="hf_11.svg" alt="" class="m-4 w-4/12 lg:w-3/12" />
       <div class="countDown flex md:items-center justify-center">
         <div class="countDownElement flex">
           <p class="flex flex-col items-center">

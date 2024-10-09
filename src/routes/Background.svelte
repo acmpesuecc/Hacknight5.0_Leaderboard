@@ -101,9 +101,9 @@
   .gradient {
     background: linear-gradient(
       90deg,
-      rgba(236, 66, 55, 0.3) 0%,
-      rgba(255, 251, 164, 0.3) 66.15%,
-      rgba(51, 182, 216, 0.3) 100%
+      rgb(16, 34, 1) 0%,
+      rgba(24, 105, 227, 0.3) 66.15%,
+      rgba(81, 218, 76, 0.3) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
