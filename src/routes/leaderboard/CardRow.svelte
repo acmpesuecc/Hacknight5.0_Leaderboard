@@ -74,12 +74,12 @@
     <div
       class="card flex m-3 p-4 bg-[#0F0913] rounded-xl items-center justify-between {index ==
       1
-        ? 'card-green'
+        ? 'card-gold'
         : ''} cursor-pointer"
       onclick="window.location='{username}'"
     >
       <div
-        class="rank font-bold text-[#EFEDEF] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
+        class="rank font-bold text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
         1
           ? 'text-[#50DA4C]'
           : 'text-[#FFDBFF]'} "
@@ -100,7 +100,7 @@
         />
         <h1
           class="{'username' +
-            index} text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
+            index} font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
             ? 'text-[#50DA4C]'
             : 'text-[#FFDBFF]'} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
         >
@@ -153,7 +153,7 @@
     backdrop-filter: blur(5px);
   }
 
-  .card-green {
+  .card-gold {
     border-color: #50DA4C;
   }
 </style>
