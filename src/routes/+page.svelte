@@ -63,7 +63,7 @@
       </div>
 
       <div class="w-full flex justify-center items-center">
-        <img src="horizontal_logo.png" class="w-2/3 lg:w-1/2" alt="logo" />
+        <img src="hf_beige.png" class="w-2/3 lg:w-1/2" alt="logo" />
       </div>
     </div>
     <div
@@ -93,7 +93,7 @@
         </a>
       </div>
 
-      <img src="computer.gif" alt="" class="m-4 w-4/12 lg:w-2/12" />
+      <img src="hf_11.svg" alt="" class="m-4 w-4/12 lg:w-2/12" />
       <div class="countDown flex md:items-center justify-center">
         <div class="countDownElement flex">
           <p class="flex flex-col items-center">
@@ -305,9 +305,9 @@
   .numbersWrapper {
     background: linear-gradient(
       90deg,
-      rgba(236, 66, 55, 0.3) 0%,
-      rgba(255, 251, 164, 0.3) 66.15%,
-      rgba(51, 182, 216, 0.3) 100%
+      #183717 0%,
+      #50DA4C 66.15%,
+      #D8FFD8 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
