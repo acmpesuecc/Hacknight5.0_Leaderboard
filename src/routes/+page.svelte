@@ -49,7 +49,7 @@
 <svelte:window bind:innerWidth />
 
 <main>
-  <body class="min-h-screen flex flex-col justify-between bg-[#0F0913]">
+  <body class="min-h-screen flex flex-col justify-between bg-[#000000]">
     <div class="numbersWrapper pt-4">
       <div class="binaryNumbers">
         {#each binaryArray as binary}
@@ -93,7 +93,12 @@
         </a>
       </div>
 
-      <img src="hf_11.svg" alt="" class="m-4 w-4/12 lg:w-3/12" />
+      <div class="video-container">
+        <video class="video" autoplay loop muted>
+          <source src="hf_11.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div class="countDown flex md:items-center justify-center">
         <div class="countDownElement flex">
           <p class="flex flex-col items-center">
@@ -350,19 +355,19 @@
 
   .links:hover span[aria-hidden="true"] span:nth-child(1) {
     animation: fadeIn 0.3s forwards;
-    color: #33b6d8;
+    color: #50DA4C;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(2) {
     animation: fadeIn 0.3s forwards;
     animation-delay: 0.3s;
-    color: #33b6d8;
+    color: #50DA4C;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(3) {
     animation: fadeIn 0.3s forwards;
     animation-delay: 0.6s;
-    color: #33b6d8;
+    color: #50DA4C;
   }
 
   @keyframes fadeIn {
@@ -376,5 +381,18 @@
 
   .arrow {
     font-size: 1.5rem;
+  }
+
+  .video-container {
+  padding-top: 50px;
+  position: relative;
+  width: 400px; /* Adjust based on your layout */
+  height: 400px; /* Adjust based on your layout */
+  overflow: hidden;
+  }
+
+  .video {
+    width: 100%;
+    height: auto;
   }
 </style>
