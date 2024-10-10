@@ -73,7 +73,7 @@
   import { onMount } from "svelte";
 
   const octokit = new Octokit({
-    auth: "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"
+    auth: "MY-TOKEN"
   });
   let totalIssuesArray = new Array(repoNames.length);
   let unassignedIssuesArray = new Array(repoNames.length).fill(null);
