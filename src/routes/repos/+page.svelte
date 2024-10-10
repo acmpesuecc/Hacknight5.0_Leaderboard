@@ -1,9 +1,8 @@
 <script>
   import Background from "../Background.svelte";
   let innerWidth = 0;
-  let releaseRepos = true;
+  let dataLoaded = false;
   let repos = [
-    // Software_Wave_1_Repos
     "https://github.com/acmpesuecc/Hacknight5.0_Leaderboard",
     "https://github.com/acmpesuecc/e-commerce-website",
     "https://github.com/acmpesuecc/SarcasmDetector",
@@ -51,7 +50,6 @@
     "https://github.com/acmpesuecc/Employee_Attrition_EDA_Prediction",
     "https://github.com/acmpesuecc/Vonic",
     "https://github.com/acmpesuecc/Logic-Gate-Simulation",
-    // Hardware_Wave_1and2and3 (new first)
     "https://github.com/acmpesuecc/Morse",
     "https://github.com/acmpesuecc/SpotiFetch",
     "https://github.com/acmpesuecc/SystemVerilog-playground",
@@ -67,45 +65,120 @@
 
   let repoNames = [];
   let regex = /\/([A-Za-z0-9_.-]+)$/;
-
   for (let repo of repos) {
-    let match = repo.match(regex);
-    repoNames.push(match[1]);
+    repoNames.push(repo.match(regex)[1]);
   }
+
+  import { Octokit } from "@octokit/core";
+  import { onMount } from "svelte";
+
+  const octokit = new Octokit({
+    auth: "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"
+  });
+  let totalIssuesArray = new Array(repoNames.length);
+  let unassignedIssuesArray = new Array(repoNames.length).fill(null);
+  let maintainersArray = new Array(repoNames.length).fill(null);
+  async function getIssueCount(repoName, index) {
+    const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+      owner: "acmpesuecc",
+      repo: repoName,
+      state: "open"
+    });
+    const issues = response.data.filter((issue) => !issue.pull_request);
+    totalIssuesArray[index] = issues.length;
+    unassignedIssuesArray[index] = issues.filter(
+      (issue) => !issue.assignee
+    ).length;
+    // console.log(unassignedIssuesArray);
+    // console.log(totalIssuesArray);
+  }
+
+  async function getMaintainers(repoName, index) {
+    const response = await octokit.request(
+      "GET /repos/{owner}/{repo}/contributors",
+      {
+        owner: "acmpesuecc",
+        repo: repoName,
+        state: "open"
+      }
+    );
+    maintainersArray[index] = response.data[0].login;
+  }
+
+  async function fetchRepoData() {
+    repoNames.forEach(async (repoName, index) => {
+      await getIssueCount(repoName, index);
+      await getMaintainers(repoName, index);
+    });
+  }
+
+  onMount(async() => {
+    await fetchRepoData();
+  });
+
+  let hovering = null;
+
+  function getInitialText(index) {
+    return `${
+      unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null
+        ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]}`
+        : "Loading..."
+    }`;
+  }
+
+  function getHoverText(index) {
+    return `Available issues: ${unassignedIssuesArray[index]}<br>Total issues: ${totalIssuesArray[index]}<br>Maintainer: ${maintainersArray[index]}`;
+  }
+
 </script>
 
 <svelte:window bind:innerWidth />
 
 <main>
   <Background />
-  {#if releaseRepos}
-    <div
-      class="text-3xl lg:text-7xl font-bold text-center mt-4 lg:mt-6 text-white"
-    >
-      GitHub Repos List
-    </div>
-    <div class="bg-[#0F0913] mx-6 my-8 lg:my-10 lg:mx-10">
-      <div
-        class="grid grid-cols-1 p-2 lg:px-4 lg:py-8 gap-x-8 lg:grid-cols-3 justify-center items-center"
-      >
-        {#each repos as repo, i}
-          <a
-            href={repo}
-            class="flex justify-center items-center mx-4"
-            target="_blank"
+  <div class="text-center mx-10 font-bold text-[100px]">GitHub Repos</div>
+  <div class="mx-10 my-5 bg-black py-2 rounded-lg">
+    <div class="grid grid-cols-1 lg:grid-cols-3">
+      {#each repos as repo, i}
+        <a
+          href={repo}
+          class="flex justify-between text-center my-3 mx-12 text-[#fffdf8] pr-4 text-[20px] bg-[#1C1C1C] py-3"
+          target="_blank"
+          on:mouseenter={() => (hovering = i)}
+          on:mouseleave={() => (hovering = null)}
+        >
+          <button class="w-full h-full text-left pl-3 truncate font-medium"
+            >{repoNames[i]}</button
           >
-            <button
-              class="w-full lg:mr-2 mb-4 p-3 break-words border border-[#231e25] hover:border-[#d2b863] active:border-[#d2b863] text-white rounded-md bg-[#231e25]"
-            >
-              {repoNames[i]}
-            </button>
-          </a>
-        {/each}
-      </div>
+          <p class="text-[12px]">
+            {@html hovering === i ? getHoverText(i) : getInitialText(i)}
+          </p>
+        </a>
+      {/each}
     </div>
-  {:else}
-    <div class="flex justify-center items-center h-screen">
-      <div class="message text-center text-3xl">Repos not yet released!</div>
-    </div>
-  {/if}
+  </div>
 </main>
+
+<style>
+  main {
+    font-family: "Space Grotesk";
+  }
+  a {
+    border: 2px solid #ffffff50;
+    border-radius: 4px;
+    font-weight: medium;
+    font-family: "Space Grotesk";
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  a:hover {
+    transform: scale(1.4);
+    display: block;
+    height: fit-content;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+</style>
