@@ -25,6 +25,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@octokit/core": "^6.1.2",
     "jquery": "^3.7.1",
     "svelte-inview": "^4.0.1"
   }
