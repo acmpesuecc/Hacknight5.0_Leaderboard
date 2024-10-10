@@ -72,9 +72,9 @@
   import { Octokit } from "@octokit/core";
   import { onMount } from "svelte";
 
-  const octokit = new Octokit({
-    auth: "MY-TOKEN"
-  });
+  // const octokit = new Octokit({
+  //   auth: "MY-TOKEN"         //uncomment when using
+  // });
   let totalIssuesArray = new Array(repoNames.length);
   let unassignedIssuesArray = new Array(repoNames.length).fill(null);
   let maintainersArray = new Array(repoNames.length).fill(null);
