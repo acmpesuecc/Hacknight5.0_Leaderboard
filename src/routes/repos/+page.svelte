@@ -72,64 +72,64 @@
   import { Octokit } from "@octokit/core";
   import { onMount } from "svelte";
 
-  // const octokit = new Octokit({
-  //   auth: "MY-TOKEN"         //uncomment when using
-  // });
+  const octokit = new Octokit({
+    auth: "token"
+  });
+
   let totalIssuesArray = new Array(repoNames.length);
   let unassignedIssuesArray = new Array(repoNames.length).fill(null);
   let maintainersArray = new Array(repoNames.length).fill(null);
-  async function getIssueCount(repoName, index) {
-    const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
-      owner: "acmpesuecc",
-      repo: repoName,
-      state: "open"
-    });
-    const issues = response.data.filter((issue) => !issue.pull_request);
-    totalIssuesArray[index] = issues.length;
-    unassignedIssuesArray[index] = issues.filter(
-      (issue) => !issue.assignee
-    ).length;
-    // console.log(unassignedIssuesArray);
-    // console.log(totalIssuesArray);
-  }
 
-  async function getMaintainers(repoName, index) {
-    const response = await octokit.request(
-      "GET /repos/{owner}/{repo}/contributors",
-      {
+  async function getIssueCount(repoName, index) {
+    try {
+      const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
         owner: "acmpesuecc",
         repo: repoName,
         state: "open"
-      }
-    );
-    maintainersArray[index] = response.data[0].login;
+      });
+      const issues = response.data.filter((issue) => !issue.pull_request);
+      totalIssuesArray[index] = issues.length;
+      unassignedIssuesArray[index] = issues.filter((issue) => !issue.assignee).length;
+    } catch (error) {
+      console.error(`Failed to fetch issue count for ${repoName}`, error);
+    }
+  }
+
+  async function getMaintainers(repoName, index) {
+    try {
+      const response = await octokit.request("GET /repos/{owner}/{repo}/contributors", {
+        owner: "acmpesuecc",
+        repo: repoName
+      });
+      maintainersArray[index] = response.data[0]?.login || "Unknown";
+    } catch (error) {
+      console.error(`Failed to fetch maintainers for ${repoName}`, error);
+    }
   }
 
   async function fetchRepoData() {
-    repoNames.forEach(async (repoName, index) => {
+    const promises = repoNames.map(async (repoName, index) => {
       await getIssueCount(repoName, index);
       await getMaintainers(repoName, index);
     });
+    
+    await Promise.all(promises);
+    dataLoaded = true;
   }
 
-  onMount(async() => {
+  onMount(async () => {
     await fetchRepoData();
   });
 
   let hovering = null;
 
   function getInitialText(index) {
-    return `${
-      unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null
-        ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]}`
-        : "Loading..."
-    }`;
+    return `${unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]}` : "Loading..."}`;
   }
 
   function getHoverText(index) {
     return `Available issues: ${unassignedIssuesArray[index]}<br>Total issues: ${totalIssuesArray[index]}<br>Maintainer: ${maintainersArray[index]}`;
   }
-
 </script>
 
 <svelte:window bind:innerWidth />
@@ -137,26 +137,31 @@
 <main>
   <Background />
   <div class="text-center mx-10 font-bold text-[100px]">GitHub Repos</div>
-  <div class="mx-10 my-5 bg-black py-2 rounded-lg">
-    <div class="grid grid-cols-1 lg:grid-cols-3">
-      {#each repos as repo, i}
-        <a
-          href={repo}
-          class="flex justify-between text-center my-3 mx-12 text-[#fffdf8] pr-4 text-[20px] bg-[#1C1C1C] py-3"
-          target="_blank"
-          on:mouseenter={() => (hovering = i)}
-          on:mouseleave={() => (hovering = null)}
-        >
-          <button class="w-full h-full text-left pl-3 truncate font-medium"
-            >{repoNames[i]}</button
+
+  {#if !dataLoaded}
+    <div class="text-center my-10 text-white text-[30px]">Loading Repos...</div>
+  {:else}
+    <div class="mx-10 my-5 bg-black py-2 rounded-lg">
+      <div class="grid grid-cols-1 lg:grid-cols-3">
+        {#each repos as repo, i}
+          <a
+            href={repo}
+            class="flex justify-between text-center my-3 mx-12 text-[#fffdf8] pr-4 text-[20px] bg-[#1C1C1C] py-3"
+            target="_blank"
+            on:mouseenter={() => (hovering = i)}
+            on:mouseleave={() => (hovering = null)}
           >
-          <p class="text-[12px]">
-            {@html hovering === i ? getHoverText(i) : getInitialText(i)}
-          </p>
-        </a>
-      {/each}
+            <button class="w-full h-full text-left pl-3 truncate font-medium">
+              {repoNames[i]}
+            </button>
+            <p class="text-[12px]">
+              {@html hovering === i ? getHoverText(i) : getInitialText(i)}
+            </p>
+          </a>
+        {/each}
+      </div>
     </div>
-  </div>
+  {/if}
 </main>
 
 <style>
