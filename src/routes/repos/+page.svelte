@@ -2,6 +2,7 @@
   import Background from "../Background.svelte";
   let innerWidth = 0;
   let dataLoaded = false;
+  let repoReleased = true;
   let repos = [
     "https://github.com/acmpesuecc/Hacknight5.0_Leaderboard",
     "https://github.com/acmpesuecc/e-commerce-website",
@@ -73,7 +74,7 @@
   import { onMount } from "svelte";
 
   const octokit = new Octokit({
-    auth: "token"
+    auth: "MY-TOKEN"
   });
 
   let totalIssuesArray = new Array(repoNames.length);
@@ -134,56 +135,62 @@
 
 <svelte:window bind:innerWidth />
 
-<main>
+<main class="font-Space-Grotesk relative">
+  <div class="flex justify-end gap-10 mx-32 mt-6 text-[30px]">
+    <a href="/" class="underline-effect">Home</a>
+    <a href="/leaderboard" class="underline-effect">Leaderboard</a>
+  </div>
   <Background />
   <div class="text-center mx-10 font-bold text-[100px]">GitHub Repos</div>
 
-  {#if !dataLoaded}
-    <div class="text-center my-10 text-white text-[30px]">Loading Repos...</div>
+  {#if !repoReleased}
+    <div class="text-center my-10 text-white text-[30px]">Waiting for event to start...</div>
   {:else}
-    <div class="mx-10 my-5 bg-black py-2 rounded-lg">
-      <div class="grid grid-cols-1 lg:grid-cols-3">
-        {#each repos as repo, i}
-          <a
-            href={repo}
-            class="flex justify-between text-center my-3 mx-12 text-[#fffdf8] pr-4 text-[20px] bg-[#1C1C1C] py-3"
-            target="_blank"
-            on:mouseenter={() => (hovering = i)}
-            on:mouseleave={() => (hovering = null)}
-          >
-            <button class="w-full h-full text-left pl-3 truncate font-medium">
-              {repoNames[i]}
-            </button>
-            <p class="text-[12px]">
-              {@html hovering === i ? getHoverText(i) : getInitialText(i)}
-            </p>
-          </a>
-        {/each}
+      <div class="mx-10 my-5 bg-transparent py-2 rounded-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-3">
+          {#each repos as repo, i}
+            <a
+              href={repo}
+              class="repo-card flex justify-between text-center my-3 mx-12 border-[2px] border-[solid] text-[#fffdf8] pr-4 text-[20px] rounded-2xl bg-gradient-to-r from-teal-800 to-emerald-500 py-3 hover:scale-[1.4] hover:block hover:h-[fit-content] [transition:transform_0.2s_ease,_border-color_0.2s_ease]"
+              target="_blank"
+              on:mouseenter={() => (hovering = i)}
+              on:mouseleave={() => (hovering = null)}
+            >
+              <button class="w-full h-full text-left pl-3 truncate font-medium">
+                {repoNames[i]}
+              </button>
+              {#if dataLoaded}
+              <p class="text-[12px]">
+                {@html hovering === i ? getHoverText(i) : getInitialText(i)}
+              </p>
+              {/if}
+            </a>
+          {/each}
+        </div>
       </div>
-    </div>
   {/if}
 </main>
 
 <style>
-  main {
-    font-family: "Space Grotesk";
-  }
-  a {
-    border: 2px solid #ffffff50;
-    border-radius: 4px;
-    font-weight: medium;
-    font-family: "Space Grotesk";
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
+.underline-effect {
+  position: relative;
+  color: white;
+  text-decoration: none;
+}
 
-  a:hover {
-    transform: scale(1.4);
-    display: block;
-    height: fit-content;
-  }
+.underline-effect::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+  transform: translateX(-50%);
+}
 
-  main {
-    position: relative;
-    z-index: 1;
-  }
+.underline-effect:hover::before {
+  width: 100%;
+}
 </style>
