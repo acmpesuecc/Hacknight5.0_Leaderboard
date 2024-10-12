@@ -16,7 +16,7 @@ const dummyData = [
   { Name: "bwaklog", Current_bounty: 1000 },
   { Name: "anirudhsudhir", Current_bounty: 800},
   { Name: "reema-s1", Current_bounty: 950},
-  { Name: "DedLad", Current_bounty: 750},
+  { Name: "DedLad", Current_bounty: 1350},
   { Name: "procub3r", Current_bounty: 990}
 ];
 
@@ -49,7 +49,7 @@ const dummyData = [
 
 <svelte:window bind:innerWidth />
 
-<main>
+<main class="font-Space-Grotesk relative">
   {#key leaderboard}
     {#await leaderboard then}
       <Background info={leaderboard} />
@@ -59,19 +59,22 @@ const dummyData = [
   <div
     class="flex flex-col min-h-[75vh] md:min-h-[80vh] lg:min-h-[100vh] justify-between mb-10"
   >
-    <div
+    <!--<<div
       class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10"
     >
-      <img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4 max-w-md" />
+      img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4 max-w-md" />
+    </div>-->
+    <div class="flex justify-end gap-10 mx-32 mt-6 text-[40px] ">
+      <a href="/" class="underline-effect">Home</a>
+      <a href="/repos" class="underline-effect">Repositories</a>
     </div>
-
     <div
       class="hero w-screen flex flex-col xl:flex-row justify-between items-center p-2 lg:p-14"
     >
-      <h1 class="text-5xl lg:text-9xl font-bold text-white">LEADERBOARD</h1>
+      <h1 class="text-xl lg:text-7xl font-bold text-white">LEADERBOARD</h1>
       <img
         src="hf_lime_logo.png"
-        class="w-1/3 md:w-[20%] lg:w-[20%] max-w-2xl"
+        class="w-1/3 md:w-[20%] lg:w-[10%] max-w-lg"
         alt="logo"
       />
     </div>
@@ -79,7 +82,7 @@ const dummyData = [
     <div
       class="flex items-center justify-center xl:justify-between p-2 lg:p-14"
     >
-      <img src="lines.svg" alt="lines" class="hidden xl:block" />
+      
       <div class="flex items-center justify-items-center">
         <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
         <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
@@ -94,7 +97,7 @@ const dummyData = [
     {#key leaderboard}
       {#if leaderboard.length > 0}
         <div
-          class="leaderboard-background rounded-xl bg-[#0F0913] m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
+          class="leaderboard-background rounded-xl m-4 lg:m-10 p-5 flex flex-col justify-stretch items-center"
         >
           {#if innerWidth <= 672}
             {#each leaderboard as person, i}
@@ -183,5 +186,26 @@ const dummyData = [
 <style>
   .grid-peeps {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  .underline-effect {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  }
+
+  .underline-effect::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #50DA4c;
+    transition: width 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .underline-effect:hover::before {
+    width: 100%;
   }
 </style>

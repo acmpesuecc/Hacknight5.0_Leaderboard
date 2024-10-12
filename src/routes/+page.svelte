@@ -361,13 +361,13 @@
   .links:hover span[aria-hidden="true"] span:nth-child(2) {
     animation: fadeIn 0.3s forwards;
     animation-delay: 0.3s;
-    color: #50DA4C;
+    color: #245e22;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(3) {
     animation: fadeIn 0.3s forwards;
     animation-delay: 0.6s;
-    color: #50DA4C;
+    color: #163b15;
   }
 
   @keyframes fadeIn {

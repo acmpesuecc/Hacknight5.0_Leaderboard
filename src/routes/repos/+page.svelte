@@ -136,7 +136,7 @@
 <svelte:window bind:innerWidth />
 
 <main class="font-Space-Grotesk relative">
-  <div class="flex justify-end gap-10 mx-32 mt-6 text-[30px]">
+  <div class="flex justify-end gap-10 mx-32 mt-6 text-[40px]">
     <a href="/" class="underline-effect">Home</a>
     <a href="/leaderboard" class="underline-effect">Leaderboard</a>
   </div>
@@ -146,12 +146,12 @@
   {#if !repoReleased}
     <div class="text-center my-10 text-white text-[30px]">Waiting for event to start...</div>
   {:else}
-      <div class="mx-10 my-5 bg-transparent py-2 rounded-lg">
+      <div class="mx-10 my-5 bg-black bg-opacity-50 py-2 rounded-lg">
         <div class="grid grid-cols-1 lg:grid-cols-3">
           {#each repos as repo, i}
             <a
               href={repo}
-              class="repo-card flex justify-between text-center my-3 mx-12 border-[2px] border-[solid] text-[#fffdf8] pr-4 text-[20px] rounded-2xl bg-gradient-to-r from-teal-800 to-emerald-500 py-3 hover:scale-[1.4] hover:block hover:h-[fit-content] [transition:transform_0.2s_ease,_border-color_0.2s_ease]"
+              class="repo-card flex justify-between text-center my-3 mx-12 border-[1px] border-[#525252] text-[#fffdf8] pr-4 text-[20px] rounded-lg bg-gradient-to-tr from-neutral-700 via-neutral-800 to-zinc-900 py-3 hover:scale-[1.1] hover:block hover:h-[fit-content] [transition:transform_0.2s_ease,_border-color_0.2s_ease]"
               target="_blank"
               on:mouseenter={() => (hovering = i)}
               on:mouseleave={() => (hovering = null)}
@@ -172,6 +172,19 @@
 </main>
 
 <style>
+
+.repo-card {
+  font-weight: medium;
+  font-family: "Space Grotesk";
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  border: 1px solid #044901;
+  background: linear-gradient(
+    156deg,
+    rgba(0, 34, 21, 0.04) 0%,
+    rgba(0, 29, 3, 0.438) 92.3%
+  );
+  backdrop-filter: blur(5px);
+}
 .underline-effect {
   position: relative;
   color: white;
@@ -185,7 +198,7 @@
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: white;
+  background-color: #50DA4C;
   transition: width 0.3s ease;
   transform: translateX(-50%);
 }

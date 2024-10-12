@@ -75,8 +75,8 @@
     top: 0;
     left: 0;
     width: 100vw;
-    background-color: #0f0913;
-    color: #231e25;
+    background-color: #000000;
+    color: #0b110d;
     overflow: hidden;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -102,7 +102,7 @@
     background: linear-gradient(
       90deg,
       rgb(16, 34, 1) 0%,
-      rgba(24, 105, 227, 0.3) 66.15%,
+      rgba(24, 105, 227, 0.37) 62.15%,
       rgba(81, 218, 76, 0.3) 100%
     );
     -webkit-background-clip: text;
