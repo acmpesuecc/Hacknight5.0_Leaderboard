@@ -146,7 +146,7 @@
   {#if !repoReleased}
     <div class="text-center my-10 text-white text-[30px]">Waiting for event to start...</div>
   {:else}
-      <div class="mx-10 my-5 bg-black bg-opacity-50 py-2 rounded-lg">
+      <div class="mx-10 my-5 bg-black bg-opacity-30 py-2 rounded-lg">
         <div class="grid grid-cols-1 lg:grid-cols-3">
           {#each repos as repo, i}
             <a
@@ -177,11 +177,11 @@
   font-weight: medium;
   font-family: "Space Grotesk";
   transition: transform 0.2s ease, border-color 0.2s ease;
-  border: 1px solid #044901;
+  border: 1px solid rgba(16, 170, 137, 0.253);
   background: linear-gradient(
     156deg,
     rgba(0, 34, 21, 0.04) 0%,
-    rgba(0, 29, 3, 0.438) 92.3%
+    rgba(4, 92, 95, 0.438) 92.3%
   );
   backdrop-filter: blur(5px);
 }

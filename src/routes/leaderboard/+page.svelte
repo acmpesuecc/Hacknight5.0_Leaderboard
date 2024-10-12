@@ -56,14 +56,10 @@ const dummyData = [
     {/await}
   {/key}
 
-  <div
+ <!--  <div
     class="flex flex-col min-h-[75vh] md:min-h-[80vh] lg:min-h-[100vh] justify-between mb-10"
   >
-    <!--<<div
-      class="header flex justify-center lg:items-left lg:justify-between lg:pl-14 pt-10"
-    >
-      img src="acmlogo.png" alt="acmlogo" class="w-1/2 lg:w-1/4 max-w-md" />
-    </div>-->
+    
     <div class="flex justify-end gap-10 mx-32 mt-6 text-[40px] ">
       <a href="/" class="underline-effect">Home</a>
       <a href="/repos" class="underline-effect">Repositories</a>
@@ -89,7 +85,44 @@ const dummyData = [
         <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
       </div>
     </div>
+  </div> -->
+
+  <div
+  class="flex flex-col min-h-screen"
+>
+
+  <div
+    class="flex justify-between items-center px-6 py-4"
+  >
+
+    <img
+      src="hf_lime_logo.png"
+      class="w-20 h-20 object-contain"
+      alt="logo"
+    />
+    <div
+      class="flex gap-10 text-[24px]"
+    >
+    <a href="/" class="underline-effect">Home</a>
+    <a href="/repos" class="underline-effect">Repositories</a>
   </div>
+  <!-- <div
+    class="hero w-screen flex flex-col xl:flex-row justify-between items-center p-2 lg:p-14"
+  > -->
+</div>
+<h1 class="text-5xl lg:text-7xl font-bold text-white text-center my-8">LEADERBOARD</h1>
+
+   <div
+    class="flex items-center justify-center xl:justify-between p-2 lg:p-14"
+  >
+    
+    <div class="flex items-center justify-items-center">
+      <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
+      <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
+      <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
+    </div>
+  </div> 
+
 
   {#await leaderboard}
     <div class="text-center">loading...</div>

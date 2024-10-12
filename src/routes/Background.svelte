@@ -103,7 +103,7 @@
       90deg,
       rgb(16, 34, 1) 0%,
       rgba(24, 105, 227, 0.37) 62.15%,
-      rgba(81, 218, 76, 0.3) 100%
+      #51da4c4d 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
