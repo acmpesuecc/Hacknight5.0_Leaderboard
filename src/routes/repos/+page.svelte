@@ -96,22 +96,9 @@
     }
   }
 
-  async function getMaintainers(repoName, index) {
-    try {
-      const response = await octokit.request("GET /repos/{owner}/{repo}/contributors", {
-        owner: "acmpesuecc",
-        repo: repoName
-      });
-      maintainersArray[index] = response.data[0]?.login || "Unknown";
-    } catch (error) {
-      console.error(`Failed to fetch maintainers for ${repoName}`, error);
-    }
-  }
-
   async function fetchRepoData() {
     const promises = repoNames.map(async (repoName, index) => {
       await getIssueCount(repoName, index);
-      await getMaintainers(repoName, index);
     });
     
     await Promise.all(promises);
@@ -122,15 +109,11 @@
     await fetchRepoData();
   });
 
-  let hovering = null;
 
   function getInitialText(index) {
-    return `${unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]}` : "Loading..."}`;
+    return `${unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]} issues available` : "Cannot load issues"}`;
   }
 
-  function getHoverText(index) {
-    return `Available issues: ${unassignedIssuesArray[index]}<br>Total issues: ${totalIssuesArray[index]}<br>Maintainer: ${maintainersArray[index]}`;
-  }
 </script>
 
 <svelte:window bind:innerWidth />
@@ -151,17 +134,15 @@
           {#each repos as repo, i}
             <a
               href={repo}
-              class="repo-card flex justify-between text-center my-3 mx-12 border-[1px] border-[#525252] text-[#fffdf8] pr-4 text-[20px] rounded-lg bg-gradient-to-tr from-neutral-700 via-neutral-800 to-zinc-900 py-3 hover:scale-[1.1] hover:block hover:h-[fit-content] [transition:transform_0.2s_ease,_border-color_0.2s_ease]"
+              class="repo-card flex justify-between text-center my-3 mx-12 border-[1px] border-[#525252] text-[#fffdf8] pr-4 text-[20px] rounded-lg bg-gradient-to-tr from-neutral-700 via-neutral-800 to-zinc-900 py-3 hover:scale-[1.1] [transition:transform_0.2s_ease,_border-color_0.2s_ease]"
               target="_blank"
-              on:mouseenter={() => (hovering = i)}
-              on:mouseleave={() => (hovering = null)}
             >
               <button class="w-full h-full text-left pl-3 truncate font-medium">
                 {repoNames[i]}
               </button>
               {#if dataLoaded}
               <p class="text-[12px]">
-                {@html hovering === i ? getHoverText(i) : getInitialText(i)}
+                {getInitialText(i)}
               </p>
               {/if}
             </a>
