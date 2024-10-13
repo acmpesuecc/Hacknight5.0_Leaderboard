@@ -119,7 +119,7 @@
 <svelte:window bind:innerWidth />
 
 <main class="font-Space-Grotesk relative">
-  <div class="flex justify-end gap-10 mx-32 mt-6 text-[40px]">
+  <div class="flex justify-end gap-4 md:gap-10 mx-4 md:mx-32 mt-4 md:mt-6 text-[20px] md:text-[30px]">
     <a href="/" class="underline-effect">Home</a>
     <a href="/leaderboard" class="underline-effect">Leaderboard</a>
   </div>
