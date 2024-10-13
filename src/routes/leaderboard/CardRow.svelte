@@ -150,7 +150,7 @@
       rgba(239, 237, 239, 0.04) 0%,
       rgba(0, 0, 0, 0.04) 92.3%
     );
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
   }
 
   .card-gold {

@@ -113,10 +113,10 @@ const dummyData = [
 <h1 class="text-5xl lg:text-7xl font-bold text-white text-center my-8">LEADERBOARD</h1>
 
    <div
-    class="flex items-center justify-center xl:justify-between p-2 lg:p-14"
+    class="flex items-center justify-center xl:justify-center p-2 lg:p-14"
   >
     
-    <div class="flex items-center justify-items-center">
+    <div class="flex items-center justify-center">
       <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
       <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
       <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
