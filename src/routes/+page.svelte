@@ -58,16 +58,16 @@
       </div>
     </div>
     <div class="grid lg:grid-cols-2 justify-center items-center mt-4 lg:mt-0">
-      <div class="w-full flex justify-center items-center">
+      <div class="w-full flex justify-center items-center mb-8 lg:mb-0">
         <img src="acmlogo.png" alt="acmlogo" class="w-2/3 lg:w-1/2" />
       </div>
 
-      <div class="w-full flex justify-center items-center">
-        <img src="hf_beige.png" class="w-2/3 lg:w-1/3" alt="logo" />
+      <div class="w-full flex justify-center items-center mb-8 lg:mb-0">
+        <img src="hf_beige.png" class="w-1/2 lg:w-1/3" alt="logo" />
       </div>
     </div>
     <div
-      class="wholeThing flex flex-col justify-around items-center lg:flex-row lg:justify-evenly min-h-[50vh]"
+      class="wholeThing flex flex-col justify-around items-center lg:flex-row lg:justify-evenly min-h-[50vh] mt-4 lg:mt-0"
     >
       <div
         class="buttons flex flex-col justify-center items-center text-3xl font-bold md:mb-8"
@@ -138,7 +138,7 @@
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -146,11 +146,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -158,11 +158,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -170,11 +170,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -184,11 +184,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -196,11 +196,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -208,11 +208,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -220,11 +220,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="hf_11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -291,7 +291,7 @@
     width: 80px;
     height: auto;
     padding: 60px 0;
-    transform: rotate(12deg);
+    /* transform: rotate(12deg); */
   }
 
   .binaryNumbers {
@@ -354,19 +354,19 @@
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(1) {
-    animation: fadeIn 0.3s forwards;
+    animation: fadeIn 0.1s forwards;
     color: #50DA4C;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(2) {
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 0.3s;
+    animation: fadeIn 0.1s forwards;
+    animation-delay: 0.1s;
     color: #245e22;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(3) {
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 0.6s;
+    animation: fadeIn 0.1s forwards;
+    animation-delay: 0.3s;
     color: #163b15;
   }
 
@@ -386,8 +386,8 @@
   .video-container {
   padding-top: 50px;
   position: relative;
-  width: 400px; /* Adjust based on your layout */
-  height: 400px; /* Adjust based on your layout */
+  width: 400px; 
+  height: 400px; 
   overflow: hidden;
   }
 
