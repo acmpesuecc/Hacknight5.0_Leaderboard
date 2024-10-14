@@ -63,7 +63,7 @@
       </div>
 
       <div class="w-full flex justify-center items-center mb-8 lg:mb-0">
-        <img src="hf_beige.png" class="w-1/2 lg:w-1/3" alt="logo" />
+        <img src="hf_white.png" class="w-1/2 lg:w-1/3" alt="logo" />
       </div>
     </div>
     <div
