@@ -23,7 +23,7 @@
 const fetchLeaderboardData = async () => {
     try {
       const response = await fetch(
-        "https://bunsamosabot.hegde.live/leaderboard_mat"
+        import.meta.env.VITE_BOT_ENDPOINT + "/leaderboard_mat"
       );
       if (!response || !response.ok) {
         throw new Error("Reddy Anna Is Not Talking");
@@ -126,6 +126,7 @@ const fetchLeaderboardData = async () => {
       <img src="downarrow.svg" alt="" class="lg:m-2 m-1 w-2/6" />
     </div>
   </div> 
+  </div>
 
 
   {#await leaderboard}
