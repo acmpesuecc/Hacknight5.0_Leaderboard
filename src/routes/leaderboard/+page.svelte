@@ -9,27 +9,31 @@
   let leaderboard;
   let oldLeaderboard = [];
 
-const dummyData = [
-  { Name: "yashmithaa", Current_bounty: 1255 },
-  { Name: "AlaynaMonteiro", Current_bounty: 1200 },
-  { Name: "polarhive", Current_bounty: 1100 },
-  { Name: "bwaklog", Current_bounty: 1000 },
-  { Name: "anirudhsudhir", Current_bounty: 800},
-  { Name: "reema-s1", Current_bounty: 950},
-  { Name: "DedLad", Current_bounty: 1350},
-  { Name: "procub3r", Current_bounty: 990}
-];
+// const dummyData = [
+//   { Name: "yashmithaa", Current_bounty: 1255 },
+//   { Name: "AlaynaMonteiro", Current_bounty: 1200 },
+//   { Name: "polarhive", Current_bounty: 1100 },
+//   { Name: "bwaklog", Current_bounty: 1000 },
+//   { Name: "anirudhsudhir", Current_bounty: 800},
+//   { Name: "reema-s1", Current_bounty: 950},
+//   { Name: "DedLad", Current_bounty: 1350},
+//   { Name: "procub3r", Current_bounty: 990}
+// ];
 
-  const fetchLeaderboardData = async () => {
+const fetchLeaderboardData = async () => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 500));
-    
-      let json_response = [...dummyData];
-      json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
-    
-      if (JSON.stringify(json_response) !== JSON.stringify(oldLeaderboard)) {
-        leaderboard = json_response;
-        oldLeaderboard = leaderboard;
+      const response = await fetch(
+        "https://bunsamosabot.hegde.live/leaderboard_mat"
+      );
+      if (!response || !response.ok) {
+        throw new Error("Reddy Anna Is Not Talking");
+      } else {
+        let json_response = await response.json();
+        json_response.sort((a, b) => b.Current_bounty - a.Current_bounty);
+        if (JSON.stringify(json_response) != JSON.stringify(oldLeaderboard)) {
+          leaderboard = json_response;
+          oldLeaderboard = leaderboard;
+        }
       }
     } catch (err) {
       console.log(err);

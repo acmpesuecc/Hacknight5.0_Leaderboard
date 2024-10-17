@@ -4,7 +4,7 @@ export async function load({ params, fetch }) {
   let username = params.slug;
   try {
     const response = await fetch(
-      `https://hacknight.navinshrinivas.com/records?user=${username}`
+      `https://bunsamosabot.hegde.live/records?user=${username}`
     );
     if (!response.ok) {
       throw new Error(response.status, "Reddy Anna Is Not Talking");

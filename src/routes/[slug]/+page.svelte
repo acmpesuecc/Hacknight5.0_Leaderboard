@@ -76,7 +76,7 @@
               </div>
               <a href={pr.Pullreq_url} class="deets" target="_blank">
                 <button
-                  class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[#FFFBA4] via-[#D2B863] to-[#AD832D] group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
+                  class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[#FFFBA4] via-[#D2B863] to-[#AD832D] group-hover:from-red-200 group-hover:via-red-300 group-hover:to-green-500 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
                 >
                   <span
                     class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
@@ -107,13 +107,13 @@
 
 <style>
   a:hover {
-    color: #d2b863;
+    color: #50da4c;
   }
 
   .card {
-    border: 1px solid rgb(101, 95, 103);
+    border: 1px solid rgb(21, 231, 254);
     backdrop-filter: blur(5px);
-    border-color: #d2b863;
+    border-color: #50da4c;
     margin: 5%;
   }
 
