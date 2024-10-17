@@ -134,11 +134,23 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+            Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
+              alt="h11 logo"
+              height="100"
+              width="100"
+            />
+            <p
+              class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
+            >
+              Git good, Hacker!
+            </p>
+            <img
+              class="logo"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -150,7 +162,7 @@
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -162,19 +174,7 @@
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
-              alt="h10 logo"
-              height="100"
-              width="100"
-            />
-            <p
-              class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
-            >
-              Git good, Hacker!
-            </p>
-            <img
-              class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -188,7 +188,7 @@
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -200,7 +200,7 @@
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -212,7 +212,7 @@
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -224,7 +224,7 @@
             </p>
             <img
               class="logo"
-              src="hf_11.svg"
+              src="asset_hf11.svg"
               alt="h10 logo"
               height="100"
               width="100"
@@ -288,7 +288,7 @@
   }
 
   .logo {
-    width: 80px;
+    width: 100px;
     height: auto;
     padding: 60px 0;
     /* transform: rotate(12deg); */
