@@ -138,7 +138,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h11 logo"
               height="100"
               width="100"
@@ -150,7 +150,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -162,7 +162,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -174,7 +174,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -188,7 +188,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -200,7 +200,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -212,7 +212,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -224,7 +224,7 @@
             </p>
             <img
               class="logo"
-              src="asset_hf11.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
