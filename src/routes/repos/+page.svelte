@@ -83,57 +83,57 @@
     repoNames.push(repo.match(regex)[1]);
   }
 
-  import { Octokit } from "@octokit/core";
-  import { onMount } from "svelte";
+  // import { Octokit } from "@octokit/core";
+  // import { onMount } from "svelte";
 
-  const octokit = new Octokit({
-    auth: import.meta.env.VITE_GITHUB_TOKEN
-  });
+  // const octokit = new Octokit({
+  //   auth: import.meta.env.VITE_GITHUB_TOKEN
+  // });
 
-  let totalIssuesArray = new Array(repoNames.length);
-  let unassignedIssuesArray = new Array(repoNames.length).fill(null);
-  let maintainersArray = new Array(repoNames.length).fill(null);
+  // let totalIssuesArray = new Array(repoNames.length);
+  // let unassignedIssuesArray = new Array(repoNames.length).fill(null);
+  // let maintainersArray = new Array(repoNames.length).fill(null);
 
-  async function getIssueCount(repoName, index) {
-    try {
-      const response = await octokit.request(
-        "GET /repos/{owner}/{repo}/issues",
-        {
-          owner: "acmpesuecc",
-          repo: repoName,
-          state: "open"
-        }
-      );
-      const issues = response.data.filter((issue) => !issue.pull_request);
-      totalIssuesArray[index] = issues.length;
-      unassignedIssuesArray[index] = issues.filter(
-        (issue) => !issue.assignee
-      ).length;
-    } catch (error) {
-      console.error(`Failed to fetch issue count for ${repoName}`, error);
-    }
-  }
+  // async function getIssueCount(repoName, index) {
+  //   try {
+  //     const response = await octokit.request(
+  //       "GET /repos/{owner}/{repo}/issues",
+  //       {
+  //         owner: "acmpesuecc",
+  //         repo: repoName,
+  //         state: "open"
+  //       }
+  //     );
+  //     const issues = response.data.filter((issue) => !issue.pull_request);
+  //     totalIssuesArray[index] = issues.length;
+  //     unassignedIssuesArray[index] = issues.filter(
+  //       (issue) => !issue.assignee
+  //     ).length;
+  //   } catch (error) {
+  //     console.error(`Failed to fetch issue count for ${repoName}`, error);
+  //   }
+  // }
 
-  async function fetchRepoData() {
-    const promises = repoNames.map(async (repoName, index) => {
-      await getIssueCount(repoName, index);
-    });
+  // async function fetchRepoData() {
+  //   const promises = repoNames.map(async (repoName, index) => {
+  //     await getIssueCount(repoName, index);
+  //   });
 
-    await Promise.all(promises);
-    dataLoaded = true;
-  }
+  //   await Promise.all(promises);
+  //   dataLoaded = true;
+  // }
 
-  onMount(async () => {
-    await fetchRepoData();
-  });
+  // onMount(async () => {
+  //   await fetchRepoData();
+  // });
 
-  function getInitialText(index) {
-    return `${
-      unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null
-        ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]} issues available`
-        : "Cannot load issues"
-    }`;
-  }
+  // function getInitialText(index) {
+  //   return `${
+  //     unassignedIssuesArray[index] !== null && totalIssuesArray[index] !== null
+  //       ? `${unassignedIssuesArray[index]}/${totalIssuesArray[index]} issues available`
+  //       : "Cannot load issues"
+  //   }`;
+  // }
 </script>
 
 <svelte:window bind:innerWidth />
@@ -166,11 +166,11 @@
             <button class="w-full h-full text-left pl-3 truncate font-medium">
               {repoNames[i]}
             </button>
-            {#if dataLoaded}
+            <!-- {#if dataLoaded}
               <p class="text-[12px]">
                 {getInitialText(i)}
               </p>
-            {/if}
+            {/if} -->
           </a>
         {/each}
       </div>
