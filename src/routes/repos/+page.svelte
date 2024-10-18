@@ -75,7 +75,8 @@
     "https://github.com/acmpesuecc/Vonic",
     "https://github.com/acmpesuecc/pasture",
     "https://github.com/acmpesuecc/pongdaddy",
-    "https://github.com/acmpesuecc/attendance_shell"
+    "https://github.com/acmpesuecc/attendance_shell",
+    "https://github.com/acmpesuecc/SystemVerilog-Playground"
   ];
 
   let repoNames = [];
