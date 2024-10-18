@@ -163,7 +163,7 @@
             class="repo-card flex justify-between text-center my-3 mx-12 border-[1px] border-[#525252] text-[#fffdf8] pr-4 text-[20px] rounded-lg bg-gradient-to-tr from-neutral-700 via-neutral-800 to-zinc-900 py-3 hover:scale-[1.1] [transition:transform_0.2s_ease,_border-color_0.2s_ease]"
             target="_blank"
           >
-            <button class="w-full h-full text-left pl-3 truncate font-medium">
+            <button class="w-full h-full pl-3 text-center truncate font-medium">
               {repoNames[i]}
             </button>
             <!-- {#if dataLoaded}
