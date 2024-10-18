@@ -52,14 +52,14 @@
     <div class="text-center text-4xl font-semibold md:text-2xl lg:text-4xl">
       PULL REQUEST HISTORY
     </div>
-    <div class="bg-[#0F0913] m-4 lg:m-10 pt-2 pb-2">
+    <div class=" m-4 lg:m-10 pt-2 pb-2">
       {#each user_details_grouped as pr_arr}
         <div
           class="card p-6 block md:grid md:grid-cols-3 md:justify-center md:items-center text-center rounded-xl"
         >
           {#each pr_arr as pr, i}
             {#if i == 0}
-              <p class="text-5xl my-auto pb-2 md:pb-0 text-[#d2b863]">
+            <p class="text-5xl my-auto pb-2 md:pb-0 text-[#50DA4c]">
                 {pr.Points_allotted}
               </p>
               <div>
@@ -75,8 +75,10 @@
                 </p>
               </div>
               <a href={pr.Pullreq_url} class="deets" target="_blank">
+                
                 <button
-                  class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[#FFFBA4] via-[#D2B863] to-[#AD832D] group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
+                  class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[#73fc93] via-[#17a137] to-[#14772b] group-hover:from-green-200 group-hover:via-green-300 group-hover:to-green-500 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-green-100 dark:focus:ring-green-400"
+                
                 >
                   <span
                     class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
@@ -107,13 +109,13 @@
 
 <style>
   a:hover {
-    color: #d2b863;
+    color: #50da4c;
   }
 
   .card {
-    border: 1px solid rgb(101, 95, 103);
+    border: 1px solid rgb(21, 231, 254);
     backdrop-filter: blur(5px);
-    border-color: #d2b863;
+    border-color: #50da4c;
     margin: 5%;
   }
 

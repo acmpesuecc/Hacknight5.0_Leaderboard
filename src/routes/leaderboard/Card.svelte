@@ -76,7 +76,7 @@
   class="{innerWidth <= 672 ? 'card-span-full' : ''} "
   transition:blur={{ duration: 500 }}
 >
-  <body class=" {index == 1 ? 'text-[#FFFBA4]' : 'text-white'} ">
+  <body class=" {index == 1 ? 'text-[#50DA4C]' : 'text-white'} ">
     <div
       class="card grid grid-cols-3 m-2 p-2 lg:p-5 lg:m-4 bg-[#0F0913] rounded-xl justify-center items-center {index ==
       1
@@ -140,17 +140,17 @@
 
 <style>
   .card {
-    border: 1px solid rgb(101, 95, 103);
+    border: 1px solid #ff8dff;
     background: linear-gradient(
       156deg,
       rgba(239, 237, 239, 0.04) 0%,
       rgba(0, 0, 0, 0.04) 92.3%
     );
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
   }
 
   .card-gold {
-    border-color: #d2b863;
+    border-color: #50DA4C;
   }
 
   .card-span-full {

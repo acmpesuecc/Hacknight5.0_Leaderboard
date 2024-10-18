@@ -3,24 +3,24 @@
   let days = 0;
   let hours = 0;
   let minutes = 0;
-  // const targetDate = new Date("October 14, 2023 10:00:00").getTime();
+  const targetDate = new Date("October 19, 2024 12:00:00").getTime();
 
-  // setInterval(() => {
-  //   const now = new Date().getTime();
+  setInterval(() => {
+    const now = new Date().getTime();
 
-  //   const remainingTime = targetDate - now;
+    const remainingTime = targetDate - now;
 
-  //   days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-  //   hours = Math.floor(
-  //     (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  //   );
-  //   minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+    hours = Math.floor(
+      (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
 
-  //   if (remainingTime < 0) {
-  //     clearInterval(this);
-  //     console.log("Countdown finished");
-  //   }
-  // }, 1000);
+    if (remainingTime < 0) {
+      clearInterval(this);
+      console.log("Countdown finished");
+    }
+  }, 1000);
 
   let contents =
     "01001111 01110000 01100101 01101110 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 01001111 01110000 01100101 01101110 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 01001111 01110000 01100101 01101110 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100";
@@ -49,7 +49,7 @@
 <svelte:window bind:innerWidth />
 
 <main>
-  <body class="min-h-screen flex flex-col justify-between bg-[#0F0913]">
+  <body class="min-h-screen flex flex-col justify-between bg-[#000000]">
     <div class="numbersWrapper pt-4">
       <div class="binaryNumbers">
         {#each binaryArray as binary}
@@ -58,16 +58,16 @@
       </div>
     </div>
     <div class="grid lg:grid-cols-2 justify-center items-center mt-4 lg:mt-0">
-      <div class="w-full flex justify-center items-center">
+      <div class="w-full flex justify-center items-center mb-8 lg:mb-0">
         <img src="acmlogo.png" alt="acmlogo" class="w-2/3 lg:w-1/2" />
       </div>
 
-      <div class="w-full flex justify-center items-center">
-        <img src="horizontal_logo.png" class="w-2/3 lg:w-1/2" alt="logo" />
+      <div class="w-full flex justify-center items-center mb-8 lg:mb-0">
+        <img src="hf_white.png" class="w-1/2 lg:w-1/3" alt="logo" />
       </div>
     </div>
     <div
-      class="wholeThing flex flex-col justify-around items-center lg:flex-row lg:justify-evenly min-h-[50vh]"
+      class="wholeThing flex flex-col justify-around items-center lg:flex-row lg:justify-evenly min-h-[50vh] mt-4 lg:mt-0"
     >
       <div
         class="buttons flex flex-col justify-center items-center text-3xl font-bold md:mb-8"
@@ -93,7 +93,12 @@
         </a>
       </div>
 
-      <img src="computer.gif" alt="" class="m-4 w-4/12 lg:w-2/12" />
+      <div class="video-container">
+        <video class="video" autoplay loop muted>
+          <source src="hf_11.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div class="countDown flex md:items-center justify-center">
         <div class="countDownElement flex">
           <p class="flex flex-col items-center">
@@ -129,11 +134,23 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+            Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="merge.png"
+              alt="h11 logo"
+              height="100"
+              width="100"
+            />
+            <p
+              class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
+            >
+              Git good, Hacker!
+            </p>
+            <img
+              class="logo"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -141,11 +158,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -153,23 +170,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
-              alt="h10 logo"
-              height="100"
-              width="100"
-            />
-            <p
-              class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
-            >
-              Get in the repo, Hacker!
-            </p>
-            <img
-              class="logo"
-              src="h_white.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -179,11 +184,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -191,11 +196,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -203,11 +208,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -215,11 +220,11 @@
             <p
               class=" text-8xl font-extrabold italic items-center text-#FFFFFF mr-4 ml-4"
             >
-              Get in the repo, Hacker!
+              Git good, Hacker!
             </p>
             <img
               class="logo"
-              src="h_white.svg"
+              src="merge.png"
               alt="h10 logo"
               height="100"
               width="100"
@@ -283,10 +288,10 @@
   }
 
   .logo {
-    width: 80px;
+    width: 100px;
     height: auto;
     padding: 60px 0;
-    transform: rotate(12deg);
+    /* transform: rotate(12deg); */
   }
 
   .binaryNumbers {
@@ -305,9 +310,9 @@
   .numbersWrapper {
     background: linear-gradient(
       90deg,
-      rgba(236, 66, 55, 0.3) 0%,
-      rgba(255, 251, 164, 0.3) 66.15%,
-      rgba(51, 182, 216, 0.3) 100%
+      #183717 0%,
+      #50DA4C 66.15%,
+      #D8FFD8 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -349,20 +354,20 @@
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(1) {
-    animation: fadeIn 0.3s forwards;
-    color: #33b6d8;
+    animation: fadeIn 0.1s forwards;
+    color: #50DA4C;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(2) {
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 0.3s;
-    color: #33b6d8;
+    animation: fadeIn 0.1s forwards;
+    animation-delay: 0.1s;
+    color: #245e22;
   }
 
   .links:hover span[aria-hidden="true"] span:nth-child(3) {
-    animation: fadeIn 0.3s forwards;
-    animation-delay: 0.6s;
-    color: #33b6d8;
+    animation: fadeIn 0.1s forwards;
+    animation-delay: 0.3s;
+    color: #163b15;
   }
 
   @keyframes fadeIn {
@@ -376,5 +381,18 @@
 
   .arrow {
     font-size: 1.5rem;
+  }
+
+  .video-container {
+  padding-top: 50px;
+  position: relative;
+  width: 400px; 
+  height: 400px; 
+  overflow: hidden;
+  }
+
+  .video {
+    width: 100%;
+    height: auto;
   }
 </style>

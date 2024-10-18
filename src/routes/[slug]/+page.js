@@ -1,10 +1,11 @@
+
 let user_details;
 
 export async function load({ params, fetch }) {
   let username = params.slug;
   try {
     const response = await fetch(
-      `https://hacknight.navinshrinivas.com/records?user=${username}`
+      import.meta.env.VITE_BOT_ENDPOINT +`/records?user=${username}`
     );
     if (!response.ok) {
       throw new Error(response.status, "Reddy Anna Is Not Talking");

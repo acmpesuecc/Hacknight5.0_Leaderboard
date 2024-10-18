@@ -79,10 +79,10 @@
       onclick="window.location='{username}'"
     >
       <div
-        class="rank font-bold text-[#EFEDEF] text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
+        class="rank font-bold text-5xl ml-6 mr-6 lg:ml-8 md:ml-8 {index ==
         1
-          ? 'text-[#FFFBA4]'
-          : ''} "
+          ? 'text-[#50DA4C]'
+          : 'text-[#FFDBFF]'} "
       >
         {index}
       </div>
@@ -100,9 +100,9 @@
         />
         <h1
           class="{'username' +
-            index} text-[#EFEDEF] font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
-            ? 'text-[#FFFBA4]'
-            : ''} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
+            index} font-bold m-4 mb-1 lg:m-4 md:mb-1 {index == 1
+            ? 'text-[#50DA4C]'
+            : 'text-[#FFDBFF]'} {username.length > 12 ? 'text-2xl' : 'md:text-4xl'}"
         >
           {usernameText.toUpperCase()}
         </h1>
@@ -116,8 +116,8 @@
         />
         <div
           class="score text-3xl mb-2 lg:p-2 {index == 1
-            ? 'text-[#FFFBA4]'
-            : ''} "
+            ? 'text-[#50DA4C]'
+            : 'text-[#FFDBFF]'} "
         >
           {scoreText}
         </div>
@@ -144,16 +144,16 @@
 
 <style>
   .card {
-    border: 1px solid rgb(101, 95, 103);
+    border: 1px solid #FF8BFF;
     background: linear-gradient(
       156deg,
       rgba(239, 237, 239, 0.04) 0%,
       rgba(0, 0, 0, 0.04) 92.3%
     );
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
   }
 
   .card-gold {
-    border-color: #d2b863;
+    border-color: #50DA4C;
   }
 </style>
