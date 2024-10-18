@@ -74,7 +74,8 @@
     "https://github.com/acmpesuecc/ASTViz",
     "https://github.com/acmpesuecc/Vonic",
     "https://github.com/acmpesuecc/pasture",
-    "https://github.com/acmpesuecc/pongdaddy"
+    "https://github.com/acmpesuecc/pongdaddy",
+    "https://github.com/acmpesuecc/attendance_shell"
   ];
 
   let repoNames = [];
